@@ -35,7 +35,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # add digitalocean vps ip 
 ALLOWED_HOSTS = ['localhost', 
-                '127.0.0.1']
+                '127.0.0.1',
+                'lctechnologies.local']
 
 
 # rest framework global settings
