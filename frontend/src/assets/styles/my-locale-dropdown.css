@@ -1,0 +1,76 @@
+/* locale dropdown */
+.dropdown-menu, .dropdown-content, .dropdown-item {
+    background-color: rgb(56, 52, 52,);
+
+}
+
+.dropdown, .dropdown-menu {
+	padding-right: 2rem;
+}
+
+/* .dropdown-menu {
+	opacity: 0;
+	visibility: hidden;
+	padding-top: 0;
+}
+  
+.is-hoverable:hover .dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+  } */
+
+.dropdown-item a {
+    color: rgb(0, 0, 0) !important;
+	font-weight:100;
+	font-size: 16px;
+}
+
+/* button locale container */
+.vt-flyout-button {
+	transition: color .5s;
+	background-color: transparent;
+	background-image: none;
+	border: 0;
+}
+
+@media screen and (max-width: 1024px) {
+    
+    .vt-flyout-button {
+        padding-right: 1rem;
+    }
+}
+
+.vt-locales-btn-icon-container {
+	display: flex;
+  	align-items: center;
+  	cursor: pointer;
+}
+
+/* locale icon svg*/
+.vt-locales-btn-icon {
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: #000000;
+}
+
+/* locale icon */
+.dropdown:hover .vt-locales-btn-icon {
+    fill: rgb(185, 0, 138);
+  }
+
+/* dropdown items */
+.dropdown-span:hover {
+    color: rgb(0, 91, 91) !important;
+	transition: all 0.2s ease-in;
+}
+
+.dropdown-arrow-icon {
+	display: inline-block;
+	margin-top: -2px;
+	margin-left: 4px;
+	width: 11px;
+	height: 11px;
+	fill: rgb(127, 127, 127);
+	transition: fill .25s;
+}
