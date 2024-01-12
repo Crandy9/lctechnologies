@@ -11,10 +11,10 @@
     /* width: 100vw; */
     margin-top: auto;
     position: relative;
-    background-color: black;
+    /* background-color: black; */
     object-fit: contain;
     /* darken bg image to accentuate sns links */
-    background: rgba(0, 0, 0, 0.40);
+    background: rgb(50, 50, 50)
 }
 
 /* footer bg img for mobile */
@@ -127,9 +127,10 @@
     fill: rgb(255, 0, 157);
 }
 
+/* defined inline for theme toggle
 .twitter path {
     fill: rgb(0, 0, 0);
-}
+} */
 
 .youtube path {
     fill: red;

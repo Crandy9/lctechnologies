@@ -1,0 +1,26 @@
+/* 
+
+    STYLING FOR THEME SWITCH
+
+
+*/
+
+.theme-toggle {
+
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: transparent;
+    vertical-align: middle;
+    margin-inline-start: 5px;
+    margin-top: -1px;
+
+}
+
+.theme-icon-when-dark {
+    color: white;
+}
+
+.theme-icon-when-light {
+    color: black;
+}

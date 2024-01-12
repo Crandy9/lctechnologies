@@ -1,3 +1,7 @@
 {
-    "message": "こんにちは i18n !!"
+    "message": "こんにちは i18n !!",
+
+    "contactmodal": {
+      "contactHeader": "Japanese"
+    }
   }
