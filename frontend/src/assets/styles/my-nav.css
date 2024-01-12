@@ -30,6 +30,13 @@
     /* border-radius: 1%; */
 }
 
+/* keep nav items on the end */
+.navbar-end {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
 /* when items are not under hamburger */
 /* .navbar-item:hover {
     color: rgb(0, 225, 255);

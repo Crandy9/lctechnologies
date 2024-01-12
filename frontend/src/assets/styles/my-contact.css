@@ -1,0 +1,160 @@
+/**** 
+
+    Contact form   stolen from myself xD
+
+****/
+
+/* from 0px to 769px style the contact form 
+for mobile */
+@media screen and (max-width: 769px) {
+    
+    .my-contact-div {
+        padding: 0rem !important;
+        margin-bottom: 10rem !important;
+    }
+    .card {
+        padding: 1rem !important;
+        box-shadow: none !important;
+    }
+
+    /* header */
+    .card-head {
+        padding-bottom: 3rem !important;
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+    }
+    /* title */
+    .card-title {
+        font-size: 1.5rem !important;
+        color: black !important;
+        display: inline-block !important;
+    }
+    .close-button {
+        float: right;
+    }
+    /*  popup */
+
+    /* control form fields */
+    .control {
+        padding-bottom: 0.3rem;
+    }
+    /* subtitle */
+    .subtitle:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    /* pay cancel buttons */
+    .card-foot {
+        text-align: center;
+    }
+    .my-button-contact {
+        background-color: rgb(0, 77, 112);
+        color: white;
+        margin-right: 1rem;
+        font-size: 13px;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+    }
+    
+    .my-button-contact:hover {
+        background-color: rgb(255, 217, 0);
+        color: rgba(0, 0, 0);
+    }
+    
+    .column {
+        padding-top: 0.1rem;
+        padding-bottom: 1rem;
+    }
+
+    .input {
+        border-color: rgb(32, 203, 255);
+    }
+
+    .close-button-container {
+        padding-top: 1.5rem;
+        margin-right: 1rem !important;
+    }
+}
+
+.my-textarea {
+    width: 100%;
+    height: 250px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.form-sub {
+    padding-top: 1rem;
+    font-size: 20px !important;
+}
+
+.subtitle {
+    font-size: 16px;
+}
+
+.my-label {
+    font-size: 13px !important;
+}
+
+.my-contact-div {
+    padding-left: 7rem;
+    padding-right: 7rem;
+    margin-bottom: 10rem;
+    
+}
+
+.card {
+    padding: 2rem;
+    box-shadow: none;
+
+}
+.card-head {
+    padding-bottom: 4rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+.card-title {
+    font-size: 2rem;
+    display: inline-block !important;
+    padding-top: 2rem;
+}
+
+.column, .is-12 {
+    background-color: rgb(167, 167, 255);
+
+}
+
+.close-button-container {
+    padding-top: 1.5rem;
+    margin-right: 3rem;
+    position: absolute;
+    right: 0;
+}
+
+.close-button {
+    background-color: black;
+}
+
+.close-button:hover {
+    background-color: rgb(154, 154, 154);
+    transition: all 0.3s;
+}
+.card-foot {
+    text-align: center;
+}
+
+.my-button-contact {
+    background-color: rgb(0, 77, 112) !important;
+    color: white;
+    margin-right: 1rem;
+}
+
+.my-button-contact:hover {
+    background-color: rgb(255, 217, 0) !important;
+    color: rgba(0, 0, 0);
+}

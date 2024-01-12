@@ -1,76 +1,108 @@
-/* locale dropdown */
-.dropdown-menu, .dropdown-content, .dropdown-item {
-    background-color: rgb(56, 52, 52,);
+/* *** 
 
+        DROPDOWN STYLING
+
+*/
+
+.my-link {
+	background: none;
+	border: none;
+	text-decoration: none;
+	color: #000000;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding-inline: 2rem;
+	display: inline-flex;
 }
 
-.dropdown, .dropdown-menu {
-	padding-right: 2rem;
+.my-dropdown {
+	position: relative;
 }
 
-/* .dropdown-menu {
-	opacity: 0;
-	visibility: hidden;
-	padding-top: 0;
-}
-  
-.is-hoverable:hover .dropdown-menu {
+.my-dropdown.active > .my-link + .my-dropdown-menu {
 	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
 	visibility: visible;
-  } */
-
-.dropdown-item a {
-    color: rgb(0, 0, 0) !important;
-	font-weight:100;
-	font-size: 16px;
 }
 
-/* button locale container */
-.vt-flyout-button {
-	transition: color .5s;
-	background-color: transparent;
-	background-image: none;
-	border: 0;
+/* locale icon */
+.my-dropdown:hover .locales-btn-icon {
+    fill: rgb(0, 172, 214);
+	transition: all 0.2s ease-in;
+
 }
 
-@media screen and (max-width: 1024px) {
-    
-    .vt-flyout-button {
-        padding-right: 1rem;
-    }
+.my-dropdown.active > .my-link,
+.my-link:hover {
+	color: rgb(0, 172, 214);
+	transition: all 0.2s ease-in;
 }
 
-.vt-locales-btn-icon-container {
+.my-dropdown-menu {
+	z-index: 500;
 	display: flex;
-  	align-items: center;
-  	cursor: pointer;
+	position: absolute;
+	top: calc(100% + .20rem);
+	right: 0;
+	/* left: 0;   */
+	opacity: 0; 
+	visibility: hidden;
+	transform: translateY(-4px);
+	transition: opacity .25s,visibility .25s,transform .25s;
+	max-height: calc(100vh - var(55px) - var(72px, 0px));
+	border-radius: .25rem;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
+	padding-inline:14px;
+	padding-top:10px;
+	background-color: rgb(255, 255, 255);
+	padding-inline: 1rem;
+
 }
+
+
+.my-dropdown-button {
+	background: none;
+	border: none;
+	text-decoration: none;
+	/* color: #777; */
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding: 0;
+	display: inline-flex;
+}
+
+.my-dropdown-links {
+	display: flex;
+	flex-direction: column;
+	gap: .25rem;
+	align-items: center;
+	padding-bottom: 6px;
+	font-size: .875rem;
+	position: relative;
+}
+
+
 
 /* locale icon svg*/
-.vt-locales-btn-icon {
+.locales-btn-icon {
 	display: block;
 	width: 1.5rem;
 	height: 1.5rem;
 	fill: #000000;
+	pointer-events: none;
 }
 
-/* locale icon */
-.dropdown:hover .vt-locales-btn-icon {
-    fill: rgb(185, 0, 138);
-  }
 
-/* dropdown items */
-.dropdown-span:hover {
-    color: rgb(0, 91, 91) !important;
-	transition: all 0.2s ease-in;
-}
 
 .dropdown-arrow-icon {
 	display: inline-block;
-	margin-top: -2px;
-	margin-left: 4px;
+	margin-top: 5px;
+	margin-left: 0.5rem;
 	width: 11px;
 	height: 11px;
 	fill: rgb(127, 127, 127);
 	transition: fill .25s;
-}
+} 
