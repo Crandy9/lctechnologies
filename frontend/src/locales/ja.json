@@ -1,7 +1,12 @@
 {
     "message": "こんにちは i18n !!",
 
+    "scripture_quote": "何をするにも、人に対してではなく、主に対してするように、心から働きなさい。",
+    "scripture": "-コロサイ人への手紙 3:23",
+
     "contactmodal": {
       "contactHeader": "Japanese"
-    }
+    },
+    "Current_Location": "現在地",
+    "Your_IP": "IPアドレス"
   }

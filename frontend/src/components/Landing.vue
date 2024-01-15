@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 :class="$store.state.theme_change" class="scripture_quote">"{{$t('scripture_quote')}}"</h1>
+    <p :class="$store.state.theme_change" class="scripture">{{$t('scripture')}}</p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -33,9 +34,10 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Landing',
   props: {
-    msg: String
+    scripture_quote: String,
+    scripture: String
   }
 }
 </script>

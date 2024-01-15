@@ -1,8 +1,14 @@
 {
   "message": "hello i18n !!",
 
+  "scripture_quote": "Whatever you do, work at it with all your heart, as working for the Lord, and not for human masters.",
+  "scripture": "-Colossians 3:23 NIV",
+
   "contactmodal": {
     "contactHeader": "Lol"
-  }
+  },
+
+  "Current_Location": "Current Location",
+  "Your_IP": "Your IP"
 
 }

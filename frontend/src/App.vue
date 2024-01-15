@@ -1,68 +1,68 @@
 <template>
       <nav class="navbar-end" role="navigation" aria-label="main navigation">
-      <div class="my-navbar-menu" id="my-navbar-menu">
-        <div class="my-theme-switch navbar-item">
-          <button @click="toggleTheme()" class="theme-toggle">
-              <div>
-                <i v-if="isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
-                <i v-else class="gg-sun theme-icon-when-light"></i>
-              </div>
-          </button>
-        </div>
-        <div class="my-dropdown navbar-item" data-dropdown>
-          <button class="my-link" data-dropdown-button>
-            <svg 
-              :class="theme_change"
-              class="locales-btn-icon" 
-              xmlns="http://www.w3.org/2000/svg" 
-              aria-hidden="true" 
-              focusable="false" 
-              viewBox="0 0 24 24">
-              <path 
-                d="M0 0h24v24H0z" 
-                fill="none">
-              </path>
-              <path 
-                d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
-              </path>
-            </svg>            
-          </button>
-          <div class="my-dropdown-menu">
-            <div class="my-dropdown-links">
-              <!-- region button -->
-              <a class="my-link" @click="changeLanguageButton('en')">
-                  English
-                  <svg 
-                    class="dropdown-arrow-icon"
-                    xmlns="http://www.w3.org/2000/svg" 
-                    aria-hidden="true" 
-                    focusable="false" 
-                    height="24px" 
-                    viewBox="0 0 24 24" 
-                    width="24px">
-                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                  </svg>                        
-              </a>
-              <a class="my-link" @click="changeLanguageButton('ja')">
-                  日本語
-                  <svg 
-                    class="dropdown-arrow-icon"
-                    xmlns="http://www.w3.org/2000/svg" 
-                    aria-hidden="true" 
-                    focusable="false" 
-                    height="24px" 
-                    viewBox="0 0 24 24" 
-                    width="24px">
-                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                  </svg>                            
-              </a>
-            </div>
+        <div class="my-navbar-menu" id="my-navbar-menu">
+          <div class="my-theme-switch navbar-item">
+            <button @click="toggleTheme()" class="theme-toggle">
+                <div>
+                  <i v-if="$store.state.isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
+                  <i v-else-if="!$store.state.isDarkTheme" class="gg-sun theme-icon-when-light"></i>
+                </div>
+            </button>
           </div>
-        </div> 
-      </div>
-    </nav>
+          <div class="my-dropdown navbar-item" data-dropdown>
+            <button class="my-link" data-dropdown-button>
+              <svg 
+              :class="$store.state.theme_change"
+                class="locales-btn-icon" 
+                xmlns="http://www.w3.org/2000/svg" 
+                aria-hidden="true" 
+                focusable="false" 
+                viewBox="0 0 24 24">
+                <path 
+                  d="M0 0h24v24H0z" 
+                  fill="none">
+                </path>
+                <path 
+                  d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
+                </path>
+              </svg>                        
+            </button>
+            <div class="my-dropdown-menu">
+              <div class="my-dropdown-links">
+                <!-- region button -->
+                <a class="my-link" @click="changeLanguageButton('en')">
+                    English
+                    <svg 
+                      class="dropdown-arrow-icon"
+                      xmlns="http://www.w3.org/2000/svg" 
+                      aria-hidden="true" 
+                      focusable="false" 
+                      height="24px" 
+                      viewBox="0 0 24 24" 
+                      width="24px">
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                    </svg>                        
+                </a>
+                <a class="my-link" @click="changeLanguageButton('ja')">
+                    日本語
+                    <svg 
+                      class="dropdown-arrow-icon"
+                      xmlns="http://www.w3.org/2000/svg" 
+                      aria-hidden="true" 
+                      focusable="false" 
+                      height="24px" 
+                      viewBox="0 0 24 24" 
+                      width="24px">
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                    </svg>                            
+                </a>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </nav>
   <div class="content-wrapper">
     <router-view/>
   </div>
@@ -72,10 +72,10 @@
           <div class="circle"></div>
           <div style="display: block;">
             <p style="font-size: smaller; padding: 0.2rem; color: white;">
-              Your Location: {{ $store.state.geolocation }}
+              {{$t('Current_Location')}}: {{ $store.state.geolocation }}
             </p>
             <p style="font-size: smaller; padding: 0.2rem; color: white; float:left">
-              Your IP: {{ $store.state.userIP }}
+              {{$t('Your_IP')}}: {{ $store.state.userIP }}
             </p>
           </div>
         </div>
@@ -175,6 +175,7 @@
               </li> -->
               <li class="twitter">
                   <a 
+                    :class="$store.state.theme_change"
                     class="icon twitter" 
                     rel="noopener" 
                     target="_blank" 
@@ -301,20 +302,10 @@ nav {
   @import '../src/assets/styles/my-contact.css';
   @import '../src/assets/styles/my-style.css';
   @import '../src/assets/styles/my-theme-toggle.css';
+  @import '../src/assets/styles/my-theme.css';
+  @import '../src/assets/styles/my-scripture.css';
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/moon.css');
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/sun.css');
-</style>
-
-
-<style>
-/* locale icon styling theme */
-.lightTheme {
-  fill: black;
-}
-
-.darkTheme {
-  fill: white;
-}
 </style>
 
 
@@ -328,8 +319,6 @@ export default {
 
   data () {
     return {
-      isDarkTheme: false,
-      theme_change: "lightTheme",
     }
   },
 
@@ -370,6 +359,15 @@ export default {
 
   mounted() {
 
+    if (localStorage.getItem('theme') == 'darkTheme') {
+
+        this.$store.commit('setTheme', 'darkTheme')
+    }
+    else {
+      this.$store.commit('setTheme', 'lightTheme')
+
+    }
+
     // dropdown show and hide on hover
     document.addEventListener("mouseover", e => {
       const isDropdownButton = e.target.matches("[data-dropdown-button]");
@@ -405,11 +403,7 @@ export default {
 
     // toggle theme
     toggleTheme() {
-      this.isDarkTheme = !this.isDarkTheme;
-      document.body.style.backgroundColor = this.isDarkTheme ? 'rgb(34, 34, 34)' : 'white';
-      console.log(this.isDarkTheme)
-      this.theme_change = this.isDarkTheme ? "darkTheme" : "lightTheme";
-
+      this.$store.commit('toggleTheme')
     },
 
     // change region button click
