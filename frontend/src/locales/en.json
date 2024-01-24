@@ -3,9 +3,16 @@
 
   "scripture_quote": "Whatever you do, work at it with all your heart, as working for the Lord, and not for human masters.",
   "scripture": "-Colossians 3:23 NIV",
+  
+  "whatweoffer": "What We Offer",
+  "eCommerce": "eCommerce",
+  "web_design": "Web App Design",
+  "contact": "Contact",
 
   "contactmodal": {
-    "contactHeader": "Lol"
+    "contactHeader": "Lol",
+    "submitting": "processing",
+    "submit": "submit form"
   },
 
   "Current_Location": "Current Location",

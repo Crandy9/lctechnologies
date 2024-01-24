@@ -4,8 +4,15 @@
     "scripture_quote": "何をするにも、人に対してではなく、主に対してするように、心から働きなさい。",
     "scripture": "-コロサイ人への手紙 3:23",
 
+    "whatweoffer": "サービス内容",
+    "eCommerce": "eコマース",
+    "web_design": "ウェブデザイン",
+    "contact": "Contact",
+
     "contactmodal": {
-      "contactHeader": "Japanese"
+      "contactHeader": "Japanese",
+      "submitting": "processing",
+      "submit": "submit form"
     },
     "Current_Location": "現在地",
     "Your_IP": "IPアドレス"
