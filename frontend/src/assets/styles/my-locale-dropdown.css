@@ -12,7 +12,6 @@
 	font-family: inherit;
 	font-size: inherit;
 	cursor: pointer;
-	padding-inline: 2rem;
 	display: inline-flex;
 }
 
@@ -29,14 +28,14 @@
 
 /* locale icon */
 .my-dropdown:hover .locales-btn-icon {
-    fill: rgb(0, 172, 214);
+    fill: rgb(0, 204, 255);
 	transition: all 0.2s ease-in;
 
 }
 
 .my-dropdown.active > .my-link,
 .my-link:hover {
-	color: rgb(0, 172, 214);
+	color: rgb(0, 141, 177);
 	transition: all 0.2s ease-in;
 }
 
@@ -58,6 +57,7 @@
 	padding-top:10px;
 	background-color: rgb(255, 255, 255);
 	padding-inline: 1rem;
+	white-space: nowrap;
 
 }
 
@@ -72,6 +72,11 @@
 	cursor: pointer;
 	padding: 0;
 	display: inline-flex;
+}
+
+.my-dropdown-item {
+	padding-inline: 2rem;
+
 }
 
 .my-dropdown-links {

@@ -24,3 +24,14 @@
 .theme-icon-when-light {
     color: black;
 }
+
+/* locale icon */
+.my-theme-switch:hover .gg-moon {
+    color: rgb(0, 204, 255);
+	transition: all 0.2s ease-in;
+}
+
+.my-theme-switch:hover .gg-sun {
+    color: rgb(0, 172, 214);
+	transition: all 0.2s ease-in;
+}

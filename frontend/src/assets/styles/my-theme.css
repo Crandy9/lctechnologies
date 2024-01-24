@@ -5,13 +5,13 @@
 
 */
 
-
+/* text color and twitter x icon */
 .darkTheme {
     fill: white;
     color: rgb(236, 236, 236);
 }
-  
+
 .lightTheme {
     fill: black;
-    color: #2c3e50;
+    color: #000000;
 }

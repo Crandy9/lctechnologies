@@ -1,0 +1,23 @@
+/* 
+
+    LANDING PAGE STYLING
+
+*/
+
+.feather {
+    width: 200px;
+}
+
+.my-landing {
+    margin-inline: 3rem;
+}
+
+.scripture_quote {
+    padding-top: 2rem;
+    font-weight: bold;
+}
+
+.scripture {
+    font-style: italic;
+    padding-bottom: 2rem;
+}

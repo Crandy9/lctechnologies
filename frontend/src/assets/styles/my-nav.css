@@ -7,11 +7,12 @@
 /* navbar color transparent */
 .navbar {
     background:rgba(0, 0, 0,0);
+    padding: 30px;
     top:0;
     width: 100%;
     /* make navbar go over main content */
     z-index: 9999;
-  }
+}
 
 /* Sheriff Crandy logo */
 .logo {
@@ -28,6 +29,8 @@
     font-weight: bold;
     background: none;
     /* border-radius: 1%; */
+    padding: 0.5rem 0.75rem;
+    position: relative;
 }
 
 /* keep nav items on the end */
@@ -35,6 +38,12 @@
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
+}
+
+.my-services-button {
+    font-weight: 700;
+    background: none;
+    border: none;
 }
 
 /* when items are not under hamburger */
@@ -193,14 +202,14 @@
         display: none;
     } */
 
-    /* .my-navbar-menu{
+    .my-navbar-menu {
         padding-right: 4rem;
         align-items: stretch;
         display: flex;
         position: absolute;
-        top: 1rem;
+        top: 3rem;
         right: 1rem;
-    } */
+    }
 }
 
 

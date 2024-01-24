@@ -6,21 +6,15 @@
 
 /* footer styling. Footer is fixed at bottom because section div takes up entire page height */
 .my-footer {
-    /*  */
-    /* min-height: 60vh; */
-    /* width: 100vw; */
-    margin-top: auto;
+    margin-top: 10rem;
+    /* margin-top: auto; */
     position: relative;
-    /* background-color: black; */
     object-fit: contain;
-    /* darken bg image to accentuate sns links */
-    background: rgb(90, 90, 90);
 }
 
 /* footer bg img for mobile */
 @media screen and (max-width: 1024px) {
     .my-footer {
-        /* position the bg img for mobile */
         min-height: 10rem;
         background-position: 55% 25%;
         background-size: cover;
@@ -40,9 +34,12 @@
 
 /* location beacon for footer */
 .location-beacon {
+    background-color: black;
     display: flex;
-    padding-top: 2rem;
+    padding-top: 5rem;
     padding-left: 2rem;
+    padding-bottom: 2rem;
+    color: white;
 }
 
 .circle {
@@ -179,7 +176,7 @@ li.instagram, li.youtube, li.twitter, li.gab, li.apple, li.spotify, li.amazon {
     text-align: center;
     padding-top: 5rem; 
     padding-bottom: 5rem;
-    font-size: small;
+    font-size: 16px;
     font-family:BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
