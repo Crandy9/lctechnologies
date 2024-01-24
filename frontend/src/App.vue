@@ -1,84 +1,134 @@
 <template>
-      <nav class="navbar-end" role="navigation" aria-label="main navigation">
-        <div class="my-navbar-menu" id="my-navbar-menu">
-          <div class="my-theme-switch navbar-item">
-            <button @click="toggleTheme()" class="theme-toggle">
-                <div>
-                  <i v-if="$store.state.isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
-                  <i v-else-if="!$store.state.isDarkTheme" class="gg-sun theme-icon-when-light"></i>
-                </div>
-            </button>
-          </div>
-          <div class="my-dropdown navbar-item" data-dropdown>
-            <button class="my-link" data-dropdown-button>
-              <svg 
-              :class="$store.state.theme_change"
-                class="locales-btn-icon" 
-                xmlns="http://www.w3.org/2000/svg" 
-                aria-hidden="true" 
-                focusable="false" 
-                viewBox="0 0 24 24">
-                <path 
-                  d="M0 0h24v24H0z" 
-                  fill="none">
-                </path>
-                <path 
-                  d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
-                </path>
-              </svg>                        
-            </button>
-            <div class="my-dropdown-menu">
-              <div class="my-dropdown-links">
-                <!-- region button -->
-                <a class="my-link" @click="changeLanguageButton('en')">
-                    English
-                    <svg 
-                      class="dropdown-arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg" 
-                      aria-hidden="true" 
-                      focusable="false" 
-                      height="24px" 
-                      viewBox="0 0 24 24" 
-                      width="24px">
-                      <path d="M0 0h24v24H0V0z" fill="none"></path>
-                      <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                    </svg>                        
-                </a>
-                <a class="my-link" @click="changeLanguageButton('ja')">
-                    日本語
-                    <svg 
-                      class="dropdown-arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg" 
-                      aria-hidden="true" 
-                      focusable="false" 
-                      height="24px" 
-                      viewBox="0 0 24 24" 
-                      width="24px">
-                      <path d="M0 0h24v24H0V0z" fill="none"></path>
-                      <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                    </svg>                            
-                </a>
-              </div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!-- logo name -->
+    <div class="navbar-brand">
+      <router-link to="/" class="logo">
+        <p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>
+      </router-link>
+    </div>
+    <div class="my-navbar-menu" id="my-navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item my-theme-switch">
+        <button @click="toggleTheme()" class="theme-toggle">
+            <div>
+              <i v-if="$store.state.isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
+              <i v-else-if="!$store.state.isDarkTheme" class="gg-sun theme-icon-when-light"></i>
             </div>
-          </div> 
+        </button>
+      </div>
+      <div class="navbar-item my-dropdown" data-dropdown-services>
+        <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" data-dropdown-button-services>
+            {{$t('whatweoffer')}}
+        </button>
+        <div class="my-dropdown-menu">
+          <div class="my-dropdown-links">
+            <!-- region button -->
+            <a class="my-link my-dropdown-item" @click="scrollTo('ecommerce')">
+              {{$t('eCommerce')}}
+                <svg 
+                  class="dropdown-arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  width="24px">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>                        
+            </a>
+            <a class="my-link my-dropdown-item" @click="scrollTo('webapp')">
+              {{$t('web_design')}}
+                <svg 
+                  class="dropdown-arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  width="24px">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>                            
+            </a>
+            <a class="my-link my-dropdown-item" @click="scrollTo('contact')">
+              {{$t('contact')}}
+                <svg 
+                  class="dropdown-arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  width="24px">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>                            
+            </a>
+          </div>
         </div>
-      </nav>
+      </div> 
+      <div class="navbar-item my-dropdown" data-dropdown>
+        <button class="my-link" data-dropdown-button>
+          <svg 
+          :class="$store.state.theme_change"
+            class="locales-btn-icon" 
+            xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true" 
+            focusable="false" 
+            viewBox="0 0 24 24">
+            <path 
+              d="M0 0h24v24H0z" 
+              fill="none">
+            </path>
+            <path 
+              d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
+            </path>
+          </svg>                        
+        </button>
+        <div class="my-dropdown-menu">
+          <div class="my-dropdown-links">
+            <!-- region button -->
+            <a class="my-link my-dropdown-item" @click="changeLanguageButton('en')">
+                English
+                <svg 
+                  class="dropdown-arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  width="24px">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>                        
+            </a>
+            <a class="my-link my-dropdown-item" @click="changeLanguageButton('ja')">
+                日本語
+                <svg 
+                  class="dropdown-arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  width="24px">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>                            
+            </a>
+          </div>
+        </div>
+      </div> 
+      </div>
+
+    </div>
+  </nav>
   <div class="content-wrapper">
     <router-view/>
   </div>
   		<!-- Footer only stays at the bottom in this file, not App.vue-->
       <footer class="my-footer">
-        <div class="location-beacon">
-          <div class="circle"></div>
-          <div style="display: block;">
-            <p style="font-size: smaller; padding: 0.2rem; color: white;">
-              {{$t('Current_Location')}}: {{ $store.state.geolocation }}
-            </p>
-            <p style="font-size: smaller; padding: 0.2rem; color: white; float:left">
-              {{$t('Your_IP')}}: {{ $store.state.userIP }}
-            </p>
-          </div>
-        </div>
           <!-- SNS icons -->
           <div class="social-media-div">
             <ul class="sns">
@@ -197,7 +247,7 @@
                       role="none" 
                       class="u01b__icon-home"> 
                       <path 
-                        :class="theme_change"
+                        :class="$store.state.theme_change"
                         d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z">
                       </path> 
                     </svg>
@@ -266,7 +316,20 @@
                 LC Technologies
                 <img class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
               </a> 				 -->
-          </div>
+
+          </div>   
+
+          <div class="location-beacon">
+            <div class="circle"></div>
+            <div style="display: block;">
+              <p style="font-size: small; padding: 0.2rem;">
+                {{$t('Current_Location')}}: {{ $store.state.geolocation }}
+              </p>
+              <p style="font-size: small; padding: 0.2rem; float:left">
+                {{$t('Your_IP')}}: {{ $store.state.userIP }}
+              </p>
+            </div>
+          </div>       
       </footer>
 </template>
 
@@ -280,18 +343,6 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-my-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
 
 <!-- import required css files -->
@@ -303,7 +354,7 @@ nav {
   @import '../src/assets/styles/my-style.css';
   @import '../src/assets/styles/my-theme-toggle.css';
   @import '../src/assets/styles/my-theme.css';
-  @import '../src/assets/styles/my-scripture.css';
+  @import '../src/assets/styles/my-landing.css';
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/moon.css');
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/sun.css');
 </style>
@@ -313,6 +364,7 @@ nav {
 
 // import axios for retrieving web token from backend api
 import axios from 'axios'
+import HomeView from '@/views/HomeView.vue';
 
 // change hamburger clicked boolean
 export default {
@@ -356,6 +408,10 @@ export default {
     }
 
   },
+  components: {
+    HomeView,
+  },
+
 
   mounted() {
 
@@ -368,7 +424,35 @@ export default {
 
     }
 
-    // dropdown show and hide on hover
+
+    // dropdown show and hide on hover for services
+    document.addEventListener("mouseover", e => {
+      const isDropdownButton = e.target.matches("[data-dropdown-button-services]");
+      const dropdown = e.target.closest("[data-dropdown-services]");
+
+      if (!dropdown) return;
+
+      if (isDropdownButton || dropdown.querySelector(":hover")) {
+        dropdown.classList.add("active");
+      }
+    });
+
+    document.addEventListener("mouseout", e => {
+      // const isDropdownButton = e.target.matches("[data-dropdown-button-services]");
+      const dropdown = e.target.closest("[data-dropdown-services]");
+
+      if (!dropdown) return;
+
+      // Check if the mouse is not over the dropdown or the dropdown button
+      if (!dropdown.contains(e.relatedTarget) && 
+          !e.relatedTarget.matches("[data-dropdown-button-services]") && 
+          !dropdown.querySelector(":hover")) {
+        dropdown.classList.remove("active");
+      }
+    });    
+
+
+    // dropdown show and hide on hover for locale
     document.addEventListener("mouseover", e => {
       const isDropdownButton = e.target.matches("[data-dropdown-button]");
       const dropdown = e.target.closest("[data-dropdown]");
@@ -381,7 +465,7 @@ export default {
     });
 
     document.addEventListener("mouseout", e => {
-      const isDropdownButton = e.target.matches("[data-dropdown-button]");
+      // const isDropdownButton = e.target.matches("[data-dropdown-button]");
       const dropdown = e.target.closest("[data-dropdown]");
 
       if (!dropdown) return;
@@ -393,6 +477,7 @@ export default {
         dropdown.classList.remove("active");
       }
     });
+
   },
   computed: {
 
@@ -400,6 +485,24 @@ export default {
 
   // methods 
   methods: {
+
+
+    scrollTo(section) {
+      this.$store.commit('scrollTo', section)
+    },
+
+    // navigate to eCommerce section
+    // scrollToECommerce() {
+    //   this.$store.commit('scrollToECommerce')
+    // },
+    // navigate to eCommerce section
+    // scrollToWebApp() {
+    //   this.$store.commit('scrollToWebApp')
+    // },
+
+    // scrollToContact() {
+    //   this.$store.commit('scrollToContact')
+    // },
 
     // toggle theme
     toggleTheme() {
