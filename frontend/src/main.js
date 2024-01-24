@@ -24,4 +24,4 @@ else {
     axios.defaults.baseURL = (process.env.VUE_APP_HTTP_BACKEND_URL)
 }
 
-createApp(App).use(store).use(router, axios).use(i18n).mount('#app')
+createApp(App).use(store).use(router, axios).use(i18n).mount('#app');
