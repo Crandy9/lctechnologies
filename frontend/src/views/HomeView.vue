@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/images/logo.png">
+    <img class="feather" alt="lctec" src="../assets/images/lctec_icon_rounded.png">
     <!-- import landing component -->
     <Landing />
   </div>
-  <div>
+
+  <!-- eCommerce section -->
+  <div :class=$store.state.theme_change ref="eCommerce">
+    <h1>Ecommerce</h1>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+
+  </div>
+    <!-- eCommerce section -->
+  <div :class=$store.state.theme_change ref="webAppDesign">
+    <h1>Web App Design</h1> 
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+  </div>
+  <!-- contact button -->
+  <div :class=$store.state.theme_change>
     <h1>LEARN MORE</h1>
     <div>
-      <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToBottom();" class="my-modal-button-buy-now button">stink</button>
+      <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">stink</button>
     </div>
   </div>
   <!-- Contact modal-->
-  <div style="z-index: 9999;" class="my-contact-div"
-      :style="showForm()" v-bind:class="{'is-active': contactButtonClicked}" ref="formTop">
+  <div class="my-contact-div" :style="showForm()" v-bind:class="{'is-active': contactButtonClicked}" ref="formTop">
     <!-- <div class="modal-background"></div> -->
     <div class="card">
       <header class="card-head">
@@ -21,7 +37,7 @@
       <div class="card-body">
         <div class="page-contact">
           <div class="close-button-container">
-            <button class="delete close-button" @click="show = false; clearFields(); contactButtonClicked = false;" aria-label="close"></button>
+            <button class="delete close-button" @click="show = false; clearFields(); formProcessing = false;" aria-label="close"></button>
           </div>
           <div class="columns is-multiline">
               <div class="column is-12 box">
@@ -96,13 +112,22 @@
               </div>
               <hr>
               <footer class="card-foot">
-                <button @click.stop="submitForm();" :disabled="formProcessing" class="my-button-contact button">
-                  <span v-if="formProcessing">
-                    {{$t('contactmodal.paymentprocessing')}}
-                  </span>
-                  <span v-else>
-                    {{$t('contactmodal.pay')}}
-                  </span>                
+                <button @click.stop="submitForm();" :disabled="formProcessing" class="my-button-contact">
+                  <div class="processing-div" v-if="formProcessing">
+                    <span>
+                      {{$t('contactmodal.submitting')}}
+                    </span>
+                    <div class="loading-dots">
+                      <span class="dot">.</span>
+                      <span class="dot">.</span>
+                      <span class="dot">.</span>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <span >
+                      {{$t('contactmodal.submit')}}
+                    </span> 
+                  </div>
                 </button>
               </footer>
           </div>
@@ -122,6 +147,7 @@
 <script>
 // @ is an alias to /src
 import Landing from '@/components/Landing.vue'
+import { mapState } from "vuex";
 
 export default {
   name: 'Home',
@@ -144,10 +170,10 @@ export default {
               servicesErrors: [],
               msgErrors: []
           }
-      }
+    }
   },
   components: {
-    Landing
+    Landing,
   },
 
   mounted() {
@@ -155,13 +181,76 @@ export default {
 
   },
   computed: {
-    
+    ...mapState(["scrollingToEcommerce"]),
+    ...mapState(["scrollingToWebApp"]),
+    ...mapState(["scrollingToContact"]),
+
   },
+
+
+  watch: {
+
+    scrollingToEcommerce(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('ecommerce');
+      }
+    },
+
+    scrollingToWebApp(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('webapp');
+      }
+    },
+
+    scrollingToContact(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('contact');
+      }
+    },
+  },
+
   methods: {
 
-    // scroll to top of form
-    scrollToBottom() {
+    submitForm() {
+      this.formProcessing = true;
+    },
+
+    scrollTo(section) {
+      console.log(section)
+
+      if (section === "ecommerce") {
+        this.$nextTick(() => this.$refs["eCommerce"].scrollIntoView({ behavior: "smooth" }))
+        this.$store.state.scrollingToEcommerce = false
+      }
+      else if (section === "webapp") {
+        this.$nextTick(() => this.$refs["webAppDesign"].scrollIntoView({ behavior: "smooth" }))
+        this.$store.state.scrollingToWebApp = false
+      }
+      else {
+        this.modalOpened = true;
+        this.show = true;
+        this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
+        this.$store.state.scrollingToContact = false      
+      }
+    },
+
+
+    // scroll to top of contact form
+    scrollToContact() {
       this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
+      
+    },
+
+    // scroll to eCommerce section
+    scrollToEcommerce() {
+
+    },
+
+
+    // scroll to eCommerce section
+    scrollToWebApp() {
+
+
     },
 
     showForm() {
@@ -169,18 +258,18 @@ export default {
     },
 
     clearFields() {
-          this.name = ''
-          this.email = ''
-          this.phone = ''
-          this.services = ''
-          this.msgs = ''
-          this.errors.generalErrors = []
-          this.errors.nameErrors = []
-          this.errors.emailErrors = []
-          this.errors.phoneErrors = []
-          this.errors.servicesErrors = []
-          this.errors.msgErrors = []
-        },
+      this.name = ''
+      this.email = ''
+      this.phone = ''
+      this.services = ''
+      this.msgs = ''
+      this.errors.generalErrors = []
+      this.errors.nameErrors = []
+      this.errors.emailErrors = []
+      this.errors.phoneErrors = []
+      this.errors.servicesErrors = []
+      this.errors.msgErrors = []
+    },
 
   }
 }
