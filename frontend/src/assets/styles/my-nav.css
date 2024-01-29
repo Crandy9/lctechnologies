@@ -220,9 +220,10 @@
     } */
 
     .navbar-end.is-active {
-        display: block;
+        display: contents;
         padding-left: 6rem;
         padding-top: 2rem;
+        margin-top: 2rem;
         opacity: 0;
         animation: fadeIn 0.3s ease-in-out 0.6s forwards;
     }
@@ -286,6 +287,7 @@
         color: rgb(255, 255, 255);
         font-weight: 700;
         font-size: 2rem;
+        display: block
     }
     .navbar-item:hover {
         color: rgb(0, 238, 255);
@@ -294,11 +296,29 @@
     a.navbar-item {
         width: fit-content;
     }
+
+    .my-dropdown-menu {
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-right: 4rem;
+        margin-left: 4rem;
+        position:  relative !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-dropdown-item {
+        font-size: 2vmin !important;
+    }
+
 }
 
 /* make text a little bit larger on super small mobile devices */
 @media screen and (max-width: 584px) {
     .navbar-item {
         font-size: 5vmin;
+    }
+    .my-dropdown-item {
+        font-size: 3vmin !important;
     }
 }

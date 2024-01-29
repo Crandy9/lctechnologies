@@ -10,7 +10,7 @@ export default createStore({
     theme_change: "lightTheme",
     theme: '',
     bgColorDark: 'rgb(22 32 47)',
-    bgColorLight: '#f2fafb',
+    bgColorLight: 'rgb(235 253 255)',
     hamburgerBgColor: '#f2fafb',
     scrollingToEcommerce: false,
     scrollingToWebApp: false,

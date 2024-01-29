@@ -21,9 +21,10 @@
   </div>
   <!-- contact button -->
   <div :class=$store.state.theme_change>
-    <h1>LEARN MORE</h1>
     <div>
-      <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">stink</button>
+      <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">
+        stink
+      </button>
     </div>
   </div>
   <!-- Contact modal-->

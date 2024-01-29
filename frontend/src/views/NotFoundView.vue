@@ -8,8 +8,8 @@
             allowFullScreen>
         </iframe>
         <div style="padding-top: 2rem;">
-            <a href="/" :class=$store.state.theme_change style="font-size: 20px; focus">
-                Click here to return to homepage
+            <a href="/" :class=$store.state.theme_change style="font-size: 20px;">
+                {{$t('notfound')}}
             </a>
         </div>
 

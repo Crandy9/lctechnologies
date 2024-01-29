@@ -15,5 +15,6 @@
       "submit": "submit form"
     },
     "Current_Location": "現在地",
-    "Your_IP": "IPアドレス"
+    "Your_IP": "IPアドレス",
+    "notfound": "お探しのページは存在しません。トップページに戻るにはここをクリックしてください。"
   }
