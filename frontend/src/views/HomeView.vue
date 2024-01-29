@@ -4,20 +4,19 @@
     <!-- import landing component -->
     <Landing />
   </div>
-
+  <!-- what we offer overivew -->
+  <div :class=$store.state.theme_change ref="offering">
+    <h1>Services</h1>
+    <div style="margin-bottom: 20rem">Blah blah blah</div>
+  </div>
   <!-- eCommerce section -->
   <div :class=$store.state.theme_change ref="eCommerce">
     <h1>Ecommerce</h1>
     <div style="margin-bottom: 20rem">Blah blah blah</div>
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-
   </div>
     <!-- eCommerce section -->
   <div :class=$store.state.theme_change ref="webAppDesign">
     <h1>Web App Design</h1> 
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
     <div style="margin-bottom: 20rem">Blah blah blah</div>
   </div>
   <!-- contact button -->
@@ -184,6 +183,7 @@ export default {
     ...mapState(["scrollingToEcommerce"]),
     ...mapState(["scrollingToWebApp"]),
     ...mapState(["scrollingToContact"]),
+    ...mapState(["scrollingToOffering"]),
 
   },
 
@@ -207,6 +207,11 @@ export default {
         this.scrollTo('contact');
       }
     },
+    scrollingToOffering(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('offering');
+      }
+    },    
   },
 
   methods: {
@@ -216,7 +221,6 @@ export default {
     },
 
     scrollTo(section) {
-      console.log(section)
 
       if (section === "ecommerce") {
         this.$nextTick(() => this.$refs["eCommerce"].scrollIntoView({ behavior: "smooth" }))
@@ -226,11 +230,15 @@ export default {
         this.$nextTick(() => this.$refs["webAppDesign"].scrollIntoView({ behavior: "smooth" }))
         this.$store.state.scrollingToWebApp = false
       }
-      else {
+      else if (section === "contact") {
         this.modalOpened = true;
         this.show = true;
         this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
         this.$store.state.scrollingToContact = false      
+      }
+      else {
+        this.$nextTick(() => this.$refs["offering"].scrollIntoView({ behavior: "smooth" }))
+        this.$store.state.scrollingToOffering = false    
       }
     },
 
@@ -239,18 +247,6 @@ export default {
     scrollToContact() {
       this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
       
-    },
-
-    // scroll to eCommerce section
-    scrollToEcommerce() {
-
-    },
-
-
-    // scroll to eCommerce section
-    scrollToWebApp() {
-
-
     },
 
     showForm() {

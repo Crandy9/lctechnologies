@@ -7,7 +7,6 @@
 /* navbar color transparent */
 .navbar {
     background:rgba(0, 0, 0,0);
-    padding: 30px;
     top:0;
     width: 100%;
     /* make navbar go over main content */
@@ -24,7 +23,7 @@
 .navbar-item {
     padding-top: 0;
     display: flex;
-    float: right;
+    /* float: right; */
     color: rgb(255, 255, 255);
     font-weight: bold;
     background: none;
@@ -78,13 +77,15 @@
     -webkit-tap-highlight-color: transparent;
 } */
 /* pfp for mobile */
-/* @media screen and (max-width: 1024px) {
-    
+/*
+ @media screen and (max-width: 1024px) {
+
     .show-pfp {
         top: 1.5rem;
         right: 2rem;
-    }
+    } 
 }
+*/
 
 .my-burger {
     z-index: 9999;
@@ -98,21 +99,21 @@
     height: 3.25rem;
     width: 3.25rem;
     border: none;
-} */
+} 
 
 /* remove hamburger button background */
-/* .my-burger:hover {
+.my-burger:hover {
     background-color: transparent;
-} */
+}
 
 /* hamburger button span stroke color on hover */
-/* .my-burger:hover span{
+.my-burger:hover span{
     color: rgb(197, 197, 197);
-} */
+}
 
 /* overwriting bulma hamburger stroke animation */
 /* stroke length and height*/
-/* .my-burger span {
+.my-burger span {
     left: calc(50% - 12px);
     position: absolute;
     transform-origin: center;
@@ -123,12 +124,12 @@
     height: 3px;
     outline: none; 
     caret-color: transparent;
-} */
+}
 
 /* remove hamburger button background */
-/* .navbar.is-dark .my-burger{
+.navbar.is-dark .my-burger{
     background: none;
-} */
+}
 
 /* hamburger button closed 3 strokes*/
 /* .my-burger span:first-child {
@@ -165,42 +166,38 @@
 } */
 
 /* hamburger button closed/open 2 strokes*/
-/* .my-burger span:first-child {
+.my-burger span:first-child {
     transition-duration: 300ms;
     top: calc(50% - 4px);
-    background-color: rgb(255, 255, 255);
 }
 .my-burger span:nth-child(2) {
     transition-duration: 300ms;
     top: calc(50% + 4px);
-    background-color: rgb(255, 255, 255);
 }
 
 .my-burger.is-active span:first-child {
     transition-duration: 300ms;
     transform: translateY(4px) rotate(45deg);
-    background-color: rgb(255, 255, 255);
 }
 
 .my-burger.is-active span:nth-child(2) {
     transition-duration: 300ms;
     transform: translateY(-4px) rotate(315deg);
-    background-color: rgb(255, 255, 255);
-} */
+}
 
 
 @media screen and (min-width: 1024px) {
-    /* .navbar-end {
+    .navbar-end {
         display: flex;
-    } */
+    }
 
     /* .navbar-sns-icons {
         display: none;
-    }
+    } */
 
     .my-burger {
         display: none;
-    } */
+    } 
 
     .my-navbar-menu {
         padding-right: 4rem;
@@ -215,27 +212,27 @@
 
 /* when navbar menu collapses under hamburger */
 @media screen and (max-width: 1023px) {
-    /* .navbar-end {
-        display: flex;
-    } */
+    .navbar-end {
+        display: none;
+    }
     /* .navbar-sns-icons {
         display: none;
     } */
 
-    /* .navbar-end.is-active {
+    .navbar-end.is-active {
         display: block;
         padding-left: 6rem;
         padding-top: 2rem;
         opacity: 0;
         animation: fadeIn 0.3s ease-in-out 0.6s forwards;
-    } */
+    }
     
-    /* @keyframes fadeIn {
+    @keyframes fadeIn {
         0% { opacity: 0; }
         50% { opacity: 0; }
         100% { opacity: 1; }
     }
-
+/* 
     .navbar-sns-icons.is-active {
         display: block;
         padding-top: 2rem;
@@ -260,12 +257,15 @@
 
 
     /* navbar when hamburger button is not clicked */
-    /* .my-navbar-menu {
-        position: flex;
+    .my-navbar-menu {
+        position: fixed;
         z-index: 999;
-    } */
+        top: 0;
+        right: 0;
+        padding-top: 60px;
+    }
     /* navbar when hamburger is opened */
-    /* .my-navbar-menu.is-active {
+    .my-navbar-menu.is-active {
         height: 100%;
         position: fixed;
         z-index: 999;
@@ -273,13 +273,13 @@
         backdrop-filter: blur(1rem);
         overflow-x: hidden;
         transition: 0.6s;
-    } */
+    }
 
     /* ensure burger button shows inside navbar menu */
-    /* .my-burger.is-active {
+    .my-burger.is-active {
         z-index: 9999;
-    } */
-/* 
+    }
+
     .navbar-item {
         padding-top: 0.5rem;
         text-decoration: none;
@@ -293,12 +293,12 @@
 
     a.navbar-item {
         width: fit-content;
-    } */
+    }
 }
 
 /* make text a little bit larger on super small mobile devices */
-/* @media screen and (max-width: 584px) {
+@media screen and (max-width: 584px) {
     .navbar-item {
         font-size: 5vmin;
     }
-} */
+}

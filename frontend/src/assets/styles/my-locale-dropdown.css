@@ -35,7 +35,7 @@
 
 .my-dropdown.active > .my-link,
 .my-link:hover {
-	color: rgb(0, 141, 177);
+	color: rgb(0, 188, 235);
 	transition: all 0.2s ease-in;
 }
 
@@ -43,7 +43,7 @@
 	z-index: 500;
 	display: flex;
 	position: absolute;
-	top: calc(100% + .20rem);
+	top: 95%;
 	right: 0;
 	/* left: 0;   */
 	opacity: 0; 

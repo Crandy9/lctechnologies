@@ -11,12 +11,11 @@ export default createStore({
     theme: '',
     bgColorDark: 'rgb(22 32 47)',
     bgColorLight: '#f2fafb',
+    hamburgerBgColor: '#f2fafb',
     scrollingToEcommerce: false,
     scrollingToWebApp: false,
     scrollingToContact: false,
-
-
-
+    scrollingToOffering: false
   },
   getters: {
     getLanguage: (state) => state.language
@@ -35,12 +34,16 @@ export default createStore({
       else if (section === "contact") {
         state.scrollingToContact = true;
       }
+      else if (section === "offering") {
+        state.scrollingToOffering = true;
+      }
     },
 
     toggleTheme(state) {
 
         state.isDarkTheme = !state.isDarkTheme;
         document.body.style.backgroundColor = state.isDarkTheme ? state.bgColorDark : state.bgColorLight;
+        state.hamburgerBgColor = state.isDarkTheme ? state.bgColorDark : state.bgColorLight;
         state.theme_change = state.isDarkTheme ? "darkTheme" : "lightTheme";
   
         localStorage.setItem("theme", state.theme_change);
@@ -52,6 +55,7 @@ export default createStore({
       if (theme === 'darkTheme') {
         state.isDarkTheme = true
         document.body.style.backgroundColor = state.bgColorDark
+        state.hamburgerBgColor = state.isDarkTheme ? state.bgColorDark : state.bgColorLight;
         state.theme_change = "darkTheme"
         localStorage.setItem("theme", state.theme_change);
       }
@@ -59,6 +63,7 @@ export default createStore({
       else if (theme === 'lightTheme') {
         state.isDarkTheme = false
         document.body.style.backgroundColor = state.bgColorLight
+        state.hamburgerBgColor = state.isDarkTheme ? state.bgColorDark : state.bgColorLight;
         state.theme_change = "lightTheme"
         localStorage.setItem("theme", state.theme_change);
       }

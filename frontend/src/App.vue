@@ -1,125 +1,143 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <!-- logo name -->
+
+    <!-- logo and hamburger menu -->
     <div class="navbar-brand">
-      <router-link to="/" class="logo">
-        <p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>
-      </router-link>
-    </div>
-    <div class="my-navbar-menu" id="my-navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item my-theme-switch">
-        <button @click="toggleTheme()" class="theme-toggle">
-            <div>
-              <i v-if="$store.state.isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
-              <i v-else-if="!$store.state.isDarkTheme" class="gg-sun theme-icon-when-light"></i>
+        <!-- logo name -->
+        <div class="navbar-brand">
+          <router-link to="/" class="logo">
+            <p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>
+          </router-link>
+        </div>
+        <!-- hamburger menu -->
+        <a
+            @click="hamburgerClicked = !hamburgerClicked"
+            role="button" 
+            class="my-burger" 
+            aria-label="menu" 
+            aria-expanded="false" 
+            data-target="my-navbar-menu" 
+            v-bind:class="{'is-active':hamburgerClicked}">
+            <div :class="$store.state.theme_change" >
+              <!-- top stroke of hamburger button -->
+              <span aria-hidden="true"></span>
+              <!-- middle stroke. Uncomment for three stroke icon, leave as is for two stroke -->
+              <!-- <span aria-hidden="true"></span> -->
+              <span aria-hidden="true"></span>
             </div>
-        </button>
-      </div>
-      <div class="navbar-item my-dropdown" data-dropdown-services>
-        <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" data-dropdown-button-services>
-            {{$t('whatweoffer')}}
-        </button>
-        <div class="my-dropdown-menu">
-          <div class="my-dropdown-links">
-            <!-- region button -->
-            <a class="my-link my-dropdown-item" @click="scrollTo('ecommerce')">
-              {{$t('eCommerce')}}
-                <svg 
-                  class="dropdown-arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  aria-hidden="true" 
-                  focusable="false" 
-                  height="24px" 
-                  viewBox="0 0 24 24" 
-                  width="24px">
-                  <path d="M0 0h24v24H0V0z" fill="none"></path>
-                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                </svg>                        
-            </a>
-            <a class="my-link my-dropdown-item" @click="scrollTo('webapp')">
-              {{$t('web_design')}}
-                <svg 
-                  class="dropdown-arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  aria-hidden="true" 
-                  focusable="false" 
-                  height="24px" 
-                  viewBox="0 0 24 24" 
-                  width="24px">
-                  <path d="M0 0h24v24H0V0z" fill="none"></path>
-                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                </svg>                            
-            </a>
-            <a class="my-link my-dropdown-item" @click="scrollTo('contact')">
-              {{$t('contact')}}
-                <svg 
-                  class="dropdown-arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  aria-hidden="true" 
-                  focusable="false" 
-                  height="24px" 
-                  viewBox="0 0 24 24" 
-                  width="24px">
-                  <path d="M0 0h24v24H0V0z" fill="none"></path>
-                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                </svg>                            
-            </a>
+        </a>
+    </div>
+    <div
+      class="my-navbar-menu" 
+      id="my-navbar-menu"
+      v-bind:class="{'is-active':hamburgerClicked}"
+      :style="hamburgerClicked === true ? 'width: 100%; background-color: ' + $store.state.hamburgerBgColor : 'width: ' + closeNav">
+      <div 
+        class="navbar-end"
+        v-bind:class="{'is-active':hamburgerClicked}">
+        <div class="navbar-item my-theme-switch">
+          <button @click="toggleTheme()" class="theme-toggle">
+              <div>
+                <i v-if="$store.state.isDarkTheme" class="gg-moon theme-icon-when-dark"></i>
+                <i v-else-if="!$store.state.isDarkTheme" class="gg-sun theme-icon-when-light"></i>
+              </div>
+          </button>
+        </div>
+        <div class="navbar-item my-dropdown" data-dropdown-services>
+          <button :class="$store.state.theme_change" class="my-link" @click="hamburgerClicked = false; scrollTo('offering')" style="font-weight: 700;" data-dropdown-button-services>
+              {{$t('whatweoffer')}}
+          </button>
+          <div class="my-dropdown-menu">
+            <div class="my-dropdown-links">
+              <!-- region button -->
+              <a class="my-link my-dropdown-item" @click="hamburgerClicked = false; scrollTo('ecommerce')">
+                {{$t('eCommerce')}}
+                  <svg 
+                    class="dropdown-arrow-icon"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    aria-hidden="true" 
+                    focusable="false" 
+                    height="24px" 
+                    viewBox="0 0 24 24" 
+                    width="24px">
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>                        
+              </a>
+              <a class="my-link my-dropdown-item" @click="hamburgerClicked = false; scrollTo('webapp')">
+                {{$t('web_design')}}
+                  <svg 
+                    class="dropdown-arrow-icon"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    aria-hidden="true" 
+                    focusable="false" 
+                    height="24px" 
+                    viewBox="0 0 24 24" 
+                    width="24px">
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>                            
+              </a>
+            </div>
+          </div>
+        </div> 
+        <div class="navbar-item my-dropdown">
+          <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" @click="hamburgerClicked = false; scrollTo('contact')">
+            {{$t('contact')}}                         
+          </button>          
+        </div> 
+        <div class="navbar-item my-dropdown" data-dropdown>
+          <button class="my-link" data-dropdown-button>
+            <svg 
+            :class="$store.state.theme_change"
+              class="locales-btn-icon" 
+              xmlns="http://www.w3.org/2000/svg" 
+              aria-hidden="true" 
+              focusable="false" 
+              viewBox="0 0 24 24">
+              <path 
+                d="M0 0h24v24H0z" 
+                fill="none">
+              </path>
+              <path 
+                d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
+              </path>
+            </svg>                        
+          </button>
+          <div class="my-dropdown-menu">
+            <div class="my-dropdown-links">
+              <!-- region button -->
+              <a class="my-link my-dropdown-item" @click="changeLanguageButton('en')">
+                  English
+                  <svg 
+                    class="dropdown-arrow-icon"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    aria-hidden="true" 
+                    focusable="false" 
+                    height="24px" 
+                    viewBox="0 0 24 24" 
+                    width="24px">
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>                        
+              </a>
+              <a class="my-link my-dropdown-item" @click="changeLanguageButton('ja')">
+                  日本語
+                  <svg 
+                    class="dropdown-arrow-icon"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    aria-hidden="true" 
+                    focusable="false" 
+                    height="24px" 
+                    viewBox="0 0 24 24" 
+                    width="24px">
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>                            
+              </a>
+            </div>
           </div>
         </div>
-      </div> 
-      <div class="navbar-item my-dropdown" data-dropdown>
-        <button class="my-link" data-dropdown-button>
-          <svg 
-          :class="$store.state.theme_change"
-            class="locales-btn-icon" 
-            xmlns="http://www.w3.org/2000/svg" 
-            aria-hidden="true" 
-            focusable="false" 
-            viewBox="0 0 24 24">
-            <path 
-              d="M0 0h24v24H0z" 
-              fill="none">
-            </path>
-            <path 
-              d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z ">
-            </path>
-          </svg>                        
-        </button>
-        <div class="my-dropdown-menu">
-          <div class="my-dropdown-links">
-            <!-- region button -->
-            <a class="my-link my-dropdown-item" @click="changeLanguageButton('en')">
-                English
-                <svg 
-                  class="dropdown-arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  aria-hidden="true" 
-                  focusable="false" 
-                  height="24px" 
-                  viewBox="0 0 24 24" 
-                  width="24px">
-                  <path d="M0 0h24v24H0V0z" fill="none"></path>
-                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                </svg>                        
-            </a>
-            <a class="my-link my-dropdown-item" @click="changeLanguageButton('ja')">
-                日本語
-                <svg 
-                  class="dropdown-arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  aria-hidden="true" 
-                  focusable="false" 
-                  height="24px" 
-                  viewBox="0 0 24 24" 
-                  width="24px">
-                  <path d="M0 0h24v24H0V0z" fill="none"></path>
-                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
-                </svg>                            
-            </a>
-          </div>
-        </div>
-      </div> 
       </div>
 
     </div>
@@ -316,9 +334,8 @@
                 LC Technologies
                 <img class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
               </a> 				 -->
-
+              Linden Crandall
           </div>   
-
           <div class="location-beacon">
             <div class="circle"></div>
             <div style="display: block;">
@@ -371,6 +388,8 @@ export default {
 
   data () {
     return {
+      hamburgerClicked: false,
+
     }
   },
 
@@ -427,8 +446,15 @@ export default {
 
     // dropdown show and hide on hover for services
     document.addEventListener("mouseover", e => {
-      const isDropdownButton = e.target.matches("[data-dropdown-button-services]");
-      const dropdown = e.target.closest("[data-dropdown-services]");
+      let isDropdownButton = null
+      let dropdown = null
+      try {
+        isDropdownButton = e.target.matches("[data-dropdown-button-services]");
+        dropdown = e.target.closest("[data-dropdown-services]");
+      }
+      catch {
+        return
+      }
 
       if (!dropdown) return;
 
@@ -438,8 +464,15 @@ export default {
     });
 
     document.addEventListener("mouseout", e => {
-      // const isDropdownButton = e.target.matches("[data-dropdown-button-services]");
-      const dropdown = e.target.closest("[data-dropdown-services]");
+
+      let dropdown = null
+
+      try {
+        dropdown = e.target.closest("[data-dropdown-services]");
+      }
+      catch {
+        return
+      }
 
       if (!dropdown) return;
 
@@ -454,8 +487,17 @@ export default {
 
     // dropdown show and hide on hover for locale
     document.addEventListener("mouseover", e => {
-      const isDropdownButton = e.target.matches("[data-dropdown-button]");
-      const dropdown = e.target.closest("[data-dropdown]");
+
+      let isDropdownButton = null
+      let dropdown = null
+
+      try {
+        isDropdownButton = e.target.matches("[data-dropdown-button]");
+        dropdown = e.target.closest("[data-dropdown]");
+      }
+      catch {
+        return
+      }
 
       if (!dropdown) return;
 
@@ -465,8 +507,15 @@ export default {
     });
 
     document.addEventListener("mouseout", e => {
-      // const isDropdownButton = e.target.matches("[data-dropdown-button]");
-      const dropdown = e.target.closest("[data-dropdown]");
+
+      let dropdown = null;
+
+      try {
+        dropdown = e.target.closest("[data-dropdown]");
+      }
+      catch {
+        return
+      }
 
       if (!dropdown) return;
 
@@ -486,24 +535,24 @@ export default {
   // methods 
   methods: {
 
+    closeNav: function() {
+      current_width = window.innerWidth;
+
+      if (current_width > 1024) {
+        return {
+          myWidth: "100"
+        }
+      }
+      else {
+        return {
+          myWidth: "0"
+        }
+      }
+    },
 
     scrollTo(section) {
       this.$store.commit('scrollTo', section)
     },
-
-    // navigate to eCommerce section
-    // scrollToECommerce() {
-    //   this.$store.commit('scrollToECommerce')
-    // },
-    // navigate to eCommerce section
-    // scrollToWebApp() {
-    //   this.$store.commit('scrollToWebApp')
-    // },
-
-    // scrollToContact() {
-    //   this.$store.commit('scrollToContact')
-    // },
-
     // toggle theme
     toggleTheme() {
       this.$store.commit('toggleTheme')
