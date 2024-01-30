@@ -15,7 +15,9 @@ export default createStore({
     scrollingToEcommerce: false,
     scrollingToWebApp: false,
     scrollingToContact: false,
-    scrollingToOffering: false
+    scrollingToOffering: false,
+    scrollingToGenSoft: false
+
   },
   getters: {
     getLanguage: (state) => state.language
@@ -36,6 +38,9 @@ export default createStore({
       }
       else if (section === "offering") {
         state.scrollingToOffering = true;
+      }
+      else if (section === "gensoft") {
+        state.scrollingToGenSoft = true;
       }
     },
 

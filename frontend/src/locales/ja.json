@@ -5,8 +5,16 @@
     "scripture": "-コロサイ人への手紙 3:23",
 
     "whatweoffer": "サービス内容",
+    "whatweofferTitle": "サービス内容",
     "eCommerce": "eコマース",
+    "eCommerceTitle": "eコマースのデザイン",
+    "eCommerceAbout": "",
     "web_design": "ウェブデザイン",
+    "web_designTitle": "ウェブデザイン",
+    "web_designAbout": "ウェブデザイン",
+    "gensoftdev": "ソフトウェア全般のメンテナンス",
+    "gensoftTitle": "ソフトウェア全般のメンテナンス",
+    "gensoftdevAbout": "ソフトウェア全般のメンテナンス",
     "contact": "お問い合わせ",
 
     "contactmodal": {

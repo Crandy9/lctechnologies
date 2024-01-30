@@ -300,6 +300,7 @@
     .my-dropdown-menu {
         opacity: 1 !important;
         visibility: visible !important;
+        margin-top: 0.5rem;
         margin-right: 4rem;
         margin-left: 4rem;
         position:  relative !important;
@@ -319,6 +320,6 @@
         font-size: 5vmin;
     }
     .my-dropdown-item {
-        font-size: 3vmin !important;
+        font-size: 3.5vmin !important;
     }
 }

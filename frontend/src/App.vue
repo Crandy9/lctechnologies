@@ -43,13 +43,13 @@
               </div>
           </button>
         </div>
+        <!-- services -->
         <div class="navbar-item my-dropdown" data-dropdown-services>
           <button :class="$store.state.theme_change" class="my-link" @click="hamburgerClicked = false; scrollTo('offering')" style="font-weight: 700;" data-dropdown-button-services>
               {{$t('whatweoffer')}}
           </button>
           <div class="my-dropdown-menu">
             <div class="my-dropdown-links">
-              <!-- region button -->
               <a class="my-link my-dropdown-item" @click="hamburgerClicked = false; scrollTo('ecommerce')">
                 {{$t('eCommerce')}}
                   <svg 
@@ -78,6 +78,20 @@
                     <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
                   </svg>                            
               </a>
+              <a class="my-link my-dropdown-item" @click="hamburgerClicked = false; scrollTo('gensoft')">
+                {{$t('gensoftdev')}}
+                  <svg 
+                    class="dropdown-arrow-icon"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    aria-hidden="true" 
+                    focusable="false" 
+                    height="24px" 
+                    viewBox="0 0 24 24" 
+                    width="24px">
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>                            
+              </a>
             </div>
           </div>
         </div> 
@@ -86,6 +100,7 @@
             {{$t('contact')}}                         
           </button>          
         </div> 
+        <!-- locale change -->
         <div class="navbar-item my-dropdown" data-dropdown>
           <button class="my-link" data-dropdown-button>
             <svg 
@@ -372,6 +387,7 @@
   @import '../src/assets/styles/my-theme-toggle.css';
   @import '../src/assets/styles/my-theme.css';
   @import '../src/assets/styles/my-landing.css';
+  @import '../src/assets/styles/my-services.css';
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/moon.css');
   @import url('https://unpkg.com/css.gg@2.0.0/icons/css/sun.css');
 </style>

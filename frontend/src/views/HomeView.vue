@@ -5,141 +5,147 @@
     <Landing />
   </div>
   <!-- what we offer overivew -->
-  <div :class=$store.state.theme_change ref="offering">
-    <h1>Services</h1>
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-  </div>
-  <!-- eCommerce section -->
-  <div :class=$store.state.theme_change ref="eCommerce">
-    <h1>Ecommerce</h1>
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-  </div>
-    <!-- eCommerce section -->
-  <div :class=$store.state.theme_change ref="webAppDesign">
-    <h1>Web App Design</h1> 
-    <div style="margin-bottom: 20rem">Blah blah blah</div>
-  </div>
-  <!-- contact button -->
-  <div :class=$store.state.theme_change>
-    <div>
-      <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">
-        stink
-      </button>
+  <div class="services-container">
+    <div :class=$store.state.theme_change ref="offering">
+      <h1 class="service-header">{{$t('whatweofferTitle')}}</h1>
     </div>
+    <!-- eCommerce section -->
+    <div class="service-item" :class=$store.state.theme_change ref="eCommerce">
+      <h1 class="service">{{$t('eCommerceTitle')}}</h1>
+      <div class="service-about">{{$t('eCommerceAbout')}}</div>
+    </div>
+      <!-- webapp section -->
+    <div class="service-item" :class=$store.state.theme_change ref="webAppDesign">
+      <h1 class="service">{{$t('web_designTitle')}}</h1> 
+      <div class="service-about">{{$t('web_designAbout')}}</div>
+    </div>
+      <!-- webapp section -->
+    <div class="service-item" :class=$store.state.theme_change ref="gensoft">
+      <h1 class="service">{{$t('gensoftTitle') }}</h1> 
+      <div class="service-about">{{$t('gensoftdevAbout')}}</div>
+    </div>    
+    <!-- contact button -->
+    <div :class=$store.state.theme_change>
+      <div>
+        <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">
+          Contact
+        </button>
+      </div>
   </div>
-  <!-- Contact modal-->
-  <div class="my-contact-div" :style="showForm()" v-bind:class="{'is-active': contactButtonClicked}" ref="formTop">
-    <!-- <div class="modal-background"></div> -->
-    <div class="card">
-      <header class="card-head">
-        <!-- <p class="card-title">{{$t('contactmodal.modaltitle')}}</p> -->
-      </header>
-      <div class="card-body">
-        <div class="page-contact">
-          <div class="close-button-container">
-            <button class="delete close-button" @click="show = false; clearFields(); formProcessing = false;" aria-label="close"></button>
-          </div>
-          <div class="columns is-multiline">
-              <div class="column is-12 box">
-                <h2 style= "text-align: center;" class="form-sub subtitle has-text-black has-text-center is-underlined">{{$t('contactmodal.contactHeader')}}</h2>
-                <!-- <p class="has-text-danger mb-4">* All fields are required</p> -->
-                <div class="columns is-multiline">
+    <!-- Contact modal-->
+    <div class="my-contact-div" :style="showForm()" v-bind:class="{'is-active': contactButtonClicked}" ref="formTop">
+      <!-- <div class="modal-background"></div> -->
+      <div class="card">
+        <header class="card-head">
+          <!-- <p class="card-title">{{$t('contactmodal.modaltitle')}}</p> -->
+        </header>
+        <div class="card-body">
+          <div class="page-contact">
+            <div class="close-button-container">
+              <button class="delete close-button" @click="show = false; clearFields(); formProcessing = false;" aria-label="close"></button>
+            </div>
+            <div class="columns is-multiline">
+                <div class="column is-12 box">
+                  <h2 style= "text-align: center;" class="form-sub subtitle has-text-black has-text-center is-underlined">{{$t('contactmodal.contactHeader')}}</h2>
+                  <!-- <p class="has-text-danger mb-4">* All fields are required</p> -->
+                  <div class="columns is-multiline">
+                    <div class="column is-6">
+                      <!-- name errors-->
+                      <div v-if="errors.nameErrors.length">
+                          <p class="my-errors" style="color:red" v-for="error in errors.nameErrors" v-bind:key="error">
+                          <span style="color:red !important">*</span> {{ error }}
+                          </p>                        
+                      </div>
+                      <div class="field">
+                        <label class="my-label has-text-black">{{$t('contactmodal.name')}}</label>
+                        <div class="control">
+                            <input type="text" class="input" :placeholder="$t('contactmodal.placeholdername')" v-model="name">
+                        </div>
+                      </div>
+                      <!-- email errors-->
+                      <div v-if="errors.emailErrors.length">
+                          <p class="my-errors" style="color:red" v-for="error in errors.emailErrors" v-bind:key="error">
+                          <span style="color:red !important">*</span> {{ error }}
+                          </p>                        
+                      </div>
+                      <div class="field">
+                        <label class="my-label has-text-black">{{$t('contactmodal.email')}}</label>
+                        <div class="control">
+                            <input type="email" class="input" placeholder="123@my-email.com" v-model="email">
+                        </div>
+                      </div>
+                      <!-- phone errors-->
+                      <div v-if="errors.phoneErrors.length">
+                          <p class="my-errors" style="color:red" v-for="error in errors.phoneErrors" v-bind:key="error">
+                          <span style="color:red !important">*</span> {{ error }}
+                          </p>                        
+                      </div>
+                      <div class="field">
+                        <label class="my-label has-text-black">{{$t('contactmodal.phone')}}</label>
+                        <div class="control">
+                            <input type="text" class="input" :placeholder="$t('contactmodal.placeholderphone')" v-model="phone">
+                        </div>
+                      </div>
+                  </div>
                   <div class="column is-6">
-                    <!-- name errors-->
-                    <div v-if="errors.nameErrors.length">
-                        <p class="my-errors" style="color:red" v-for="error in errors.nameErrors" v-bind:key="error">
+                    <!-- services errors-->
+                    <div v-if="errors.servicesErrors.length">
+                        <p class="my-errors" style="color:red" v-for="error in errors.servicesErrors" v-bind:key="error">
                         <span style="color:red !important">*</span> {{ error }}
                         </p>                        
                     </div>
                     <div class="field">
-                      <label class="my-label has-text-black">{{$t('contactmodal.name')}}</label>
+                      <label class="my-label has-text-black">{{$t('contactmodal.services')}}</label>
                       <div class="control">
-                          <input type="text" class="input" :placeholder="$t('contactmodal.placeholdername')" v-model="name">
+                          <input type="text" class="input" :placeholder="$t('contactmodal.placeholderservices')" v-model="services">
                       </div>
                     </div>
-                    <!-- email errors-->
-                    <div v-if="errors.emailErrors.length">
-                        <p class="my-errors" style="color:red" v-for="error in errors.emailErrors" v-bind:key="error">
+                    <!-- message errors-->
+                    <div v-if="errors.msgErrors.length">
+                        <p class="my-errors" style="color:red" v-for="error in errors.msgErrors" v-bind:key="error">
                         <span style="color:red !important">*</span> {{ error }}
                         </p>                        
                     </div>
                     <div class="field">
-                      <label class="my-label has-text-black">{{$t('contactmodal.email')}}</label>
+                      <label class="my-label has-text-black">{{$t('contactmodal.msgs')}}</label>
                       <div class="control">
-                          <input type="email" class="input" placeholder="123@my-email.com" v-model="email">
+                          <textarea class="my-textarea" :placeholder="$t('contactmodal.placeholdermsgs')" v-model="msgs">
+                          </textarea>
                       </div>
-                    </div>
-                    <!-- phone errors-->
-                    <div v-if="errors.phoneErrors.length">
-                        <p class="my-errors" style="color:red" v-for="error in errors.phoneErrors" v-bind:key="error">
-                        <span style="color:red !important">*</span> {{ error }}
-                        </p>                        
-                    </div>
-                    <div class="field">
-                      <label class="my-label has-text-black">{{$t('contactmodal.phone')}}</label>
-                      <div class="control">
-                          <input type="text" class="input" :placeholder="$t('contactmodal.placeholderphone')" v-model="phone">
-                      </div>
-                    </div>
-                </div>
-                <div class="column is-6">
-                  <!-- services errors-->
-                  <div v-if="errors.servicesErrors.length">
-                      <p class="my-errors" style="color:red" v-for="error in errors.servicesErrors" v-bind:key="error">
-                      <span style="color:red !important">*</span> {{ error }}
-                      </p>                        
-                  </div>
-                  <div class="field">
-                    <label class="my-label has-text-black">{{$t('contactmodal.services')}}</label>
-                    <div class="control">
-                        <input type="text" class="input" :placeholder="$t('contactmodal.placeholderservices')" v-model="services">
-                    </div>
-                  </div>
-                  <!-- message errors-->
-                  <div v-if="errors.msgErrors.length">
-                      <p class="my-errors" style="color:red" v-for="error in errors.msgErrors" v-bind:key="error">
-                      <span style="color:red !important">*</span> {{ error }}
-                      </p>                        
-                  </div>
-                  <div class="field">
-                    <label class="my-label has-text-black">{{$t('contactmodal.msgs')}}</label>
-                    <div class="control">
-                        <textarea class="my-textarea" :placeholder="$t('contactmodal.placeholdermsgs')" v-model="msgs">
-                        </textarea>
                     </div>
                   </div>
                 </div>
-              </div>
-              <hr>
-              <footer class="card-foot">
-                <button @click.stop="submitForm();" :disabled="formProcessing" class="my-button-contact">
-                  <div class="processing-div" v-if="formProcessing">
-                    <span>
-                      {{$t('contactmodal.submitting')}}
-                    </span>
-                    <div class="loading-dots">
-                      <span class="dot">.</span>
-                      <span class="dot">.</span>
-                      <span class="dot">.</span>
+                <hr>
+                <footer class="card-foot">
+                  <button @click.stop="submitForm();" :disabled="formProcessing" class="my-button-contact">
+                    <div class="processing-div" v-if="formProcessing">
+                      <span>
+                        {{$t('contactmodal.submitting')}}
+                      </span>
+                      <div class="loading-dots">
+                        <span class="dot">.</span>
+                        <span class="dot">.</span>
+                        <span class="dot">.</span>
+                      </div>
                     </div>
-                  </div>
-                  <div v-else>
-                    <span >
-                      {{$t('contactmodal.submit')}}
-                    </span> 
-                  </div>
-                </button>
-              </footer>
+                    <div v-else>
+                      <span >
+                        {{$t('contactmodal.submit')}}
+                      </span> 
+                    </div>
+                  </button>
+                </footer>
+            </div>
           </div>
         </div>
+        <!-- general errors -->
+        <div v-if="errors.generalErrors.length">
+          <p class="my-errors" style="text-align: center; color:red; padding-bottom: 1rem; padding-inline: 2.2rem;" v-for="error in errors.generalErrors" v-bind:key="error">
+            <span style="color:red !important">*</span> {{ error }}
+          </p>                        
+        </div>
       </div>
-      <!-- general errors -->
-      <div v-if="errors.generalErrors.length">
-        <p class="my-errors" style="text-align: center; color:red; padding-bottom: 1rem; padding-inline: 2.2rem;" v-for="error in errors.generalErrors" v-bind:key="error">
-          <span style="color:red !important">*</span> {{ error }}
-        </p>                        
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -185,6 +191,7 @@ export default {
     ...mapState(["scrollingToWebApp"]),
     ...mapState(["scrollingToContact"]),
     ...mapState(["scrollingToOffering"]),
+    ...mapState(["scrollingToGenSoft"]),
 
   },
 
@@ -213,6 +220,11 @@ export default {
         this.scrollTo('offering');
       }
     },    
+    scrollingToGenSoft(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('gensoft');
+      }
+    },    
   },
 
   methods: {
@@ -223,7 +235,9 @@ export default {
 
     scrollTo(section) {
 
+      const offset = 10; // Set your desired offset in pixels
       if (section === "ecommerce") {
+
         this.$nextTick(() => this.$refs["eCommerce"].scrollIntoView({ behavior: "smooth" }))
         this.$store.state.scrollingToEcommerce = false
       }
@@ -237,9 +251,13 @@ export default {
         this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
         this.$store.state.scrollingToContact = false      
       }
-      else {
+      else if (section === "offering") {
         this.$nextTick(() => this.$refs["offering"].scrollIntoView({ behavior: "smooth" }))
         this.$store.state.scrollingToOffering = false    
+      }
+      else if (section === "gensoft") {
+        this.$nextTick(() => this.$refs["gensoft"].scrollIntoView({ behavior: "smooth" }))
+        this.$store.state.scrollingToGenSoft = false    
       }
     },
 

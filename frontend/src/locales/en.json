@@ -4,9 +4,17 @@
   "scripture_quote": "Whatever you do, work at it with all your heart, as working for the Lord, and not for human masters.",
   "scripture": "-Colossians 3:23 NIV",
   
-  "whatweoffer": "What We Offer",
+  "whatweoffer": "Services",
+  "whatweofferTitle": "Services We Offer",
   "eCommerce": "eCommerce",
+  "eCommerceTitle": "eCommerce Design",
+  "eCommerceAbout": "Expand your business into an online marketplace to increase your customer base domestically, internationally, or both.",
   "web_design": "Web App Design",
+  "web_designTitle": "Web App Design",
+  "web_designAbout": "Perfect for blogs, portfolios, demonstrations and other informational websites.",
+  "gensoftdev": "General Software Development",
+  "gensoftTitle": "General Software Development",
+  "gensoftdevAbout": "Have an existing site that needs an update or is experiencing site crashes? Have an idea for a web or Android app?",
   "contact": "Contact",
 
   "contactmodal": {
