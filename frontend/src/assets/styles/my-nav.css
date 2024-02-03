@@ -212,6 +212,18 @@
 
 /* when navbar menu collapses under hamburger */
 @media screen and (max-width: 1023px) {
+
+    .navbar-brand {
+        padding-top: 0.7rem;
+        padding-inline: 0.4rem;
+    }
+
+
+    .my-burger {
+        margin-top: 0.7rem;
+        margin-inline: 0.4rem;
+    }
+
     .navbar-end {
         display: none;
     }
@@ -282,7 +294,7 @@
     }
 
     .navbar-item {
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         text-decoration: none;
         color: rgb(255, 255, 255);
         font-weight: 700;
@@ -310,6 +322,11 @@
 
     .my-dropdown-item {
         font-size: 2vmin !important;
+    }
+
+    .my-theme-switch {
+        margin-top: 2rem;
+        margin-right: 1rem;
     }
 
 }

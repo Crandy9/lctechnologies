@@ -37,6 +37,17 @@ body {
 /* remove blinking caret on music controllers
 hamburger menu spans */
 
-i {
+/* i {
     caret-color: transparent;
+} */
+
+.my-bullet-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 2rem;
+    font-weight: bold;
+}
+
+.my-bullet-points > li {
+    padding-bottom: 1rem;
 }

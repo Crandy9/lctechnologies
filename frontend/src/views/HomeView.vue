@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" style="margin-top: 4rem;">
     <img class="feather" alt="lctec" src="../assets/images/lctec_icon_rounded.png">
     <!-- import landing component -->
     <Landing />
@@ -11,24 +11,40 @@
     </div>
     <!-- eCommerce section -->
     <div class="service-item" :class=$store.state.theme_change ref="eCommerce">
-      <h1 class="service">{{$t('eCommerceTitle')}}</h1>
-      <div class="service-about">{{$t('eCommerceAbout')}}</div>
+      <h1 class="service">{{$t('eCommerceTitle')}}
+        <i :class=$store.state.theme_change class="fas fa-shopping-cart" style="color: rgb(193 120 107)"></i>
+      </h1>
+      <div class="service-about">{{$t('eCommerceAbout')}}
+      </div>
     </div>
       <!-- webapp section -->
     <div class="service-item" :class=$store.state.theme_change ref="webAppDesign">
-      <h1 class="service">{{$t('web_designTitle')}}</h1> 
+      <h1 class="service">{{$t('web_designTitle')}}
+        <i :class=$store.state.theme_change class="fa fa-globe" style="color: rgb(0, 140, 255);"></i>
+      </h1> 
       <div class="service-about">{{$t('web_designAbout')}}</div>
     </div>
       <!-- webapp section -->
     <div class="service-item" :class=$store.state.theme_change ref="gensoft">
-      <h1 class="service">{{$t('gensoftTitle') }}</h1> 
+      <h1 class="service">{{$t('gensoftTitle') }}
+        <i :class=$store.state.theme_change class="fa fa-bug" style="color: green;"></i>
+      </h1> 
       <div class="service-about">{{$t('gensoftdevAbout')}}</div>
+      <br>
+      <ul class="my-bullet-points">
+        <li>- {{$t('gensoftPart1')}}</li>
+        <li>- {{$t('gensoftPart2')}}</li>
+        <li>- {{$t('gensoftPart3')}}</li>
+        <li>- {{$t('gensoftPart4')}}</li>
+        <li>- {{$t('gensoftPart5')}}</li>
+        <li>- {{$t('gensoftPart6')}}</li>
+      </ul>
     </div>    
     <!-- contact button -->
     <div :class=$store.state.theme_change>
       <div>
-        <button @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();" class="my-modal-button-buy-now button">
-          Contact
+        <button class="my-contact-button button" @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();">
+          {{$t('contactBtn')}}
         </button>
       </div>
   </div>
