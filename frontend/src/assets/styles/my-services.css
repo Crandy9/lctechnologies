@@ -33,3 +33,16 @@
     padding-left: 2rem;
     padding-right: 2rem;
 }
+
+.showcase-client-img {
+    box-shadow: 0 0 15px rgba(0,0,0,.6);
+    border-radius: 6px;
+    max-width: 50%;
+
+}
+
+@media screen and (max-width: 1023px) {
+    .showcase-client-img {
+        max-width: 85%;
+    }
+}

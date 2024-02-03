@@ -12,7 +12,7 @@
     <!-- eCommerce section -->
     <div class="service-item" :class=$store.state.theme_change ref="eCommerce">
       <h1 class="service">{{$t('eCommerceTitle')}}
-        <i :class=$store.state.theme_change class="fas fa-shopping-cart" style="color: rgb(193 120 107)"></i>
+        <i :class=$store.state.theme_change class="fas fa-shopping-cart" style="color: rgb(247 124 73)"></i>
       </h1>
       <div class="service-about">{{$t('eCommerceAbout')}}
       </div>
@@ -40,6 +40,27 @@
         <li>- {{$t('gensoftPart6')}}</li>
       </ul>
     </div>    
+    <!-- Our work -->
+    <div :class=$store.state.theme_change>
+      <h1 class="service-header">{{$t('clients')}}</h1>
+      <!-- kaoru art gallery -->
+      <div class="service-item" :class=$store.state.theme_change>
+        <h1 class="service">
+          <a style="color: inherit;" href="https://kaoruartgallery.com" target="_blank">Kaoru Art Gallery</a>
+        </h1> 
+        <a style="color: inherit;" href="https://kaoruartgallery.com" target="_blank">
+          <img class="showcase-client-img" src="@/assets/images/kag_scrnshot.png" alt="">
+        </a>
+      </div>
+      <div class="service-item" :class=$store.state.theme_change>
+        <h1 class="service">
+          <a style="color: inherit;" href="https://sheriffcrandymusic.com" target="_blank">Sheriff Crandy Music</a>
+        </h1> 
+        <a style="color: inherit;" href="https://sheriffcrandymusic.com" target="_blank">
+          <img class="showcase-client-img" src="@/assets/images/sf_scrnshot.png" alt="">
+        </a>
+      </div>
+    </div>
     <!-- contact button -->
     <div :class=$store.state.theme_change>
       <div>
@@ -47,7 +68,7 @@
           {{$t('contactBtn')}}
         </button>
       </div>
-  </div>
+    </div>
     <!-- Contact modal-->
     <div class="my-contact-div" :style="showForm()" v-bind:class="{'is-active': contactButtonClicked}" ref="formTop">
       <!-- <div class="modal-background"></div> -->
