@@ -26,7 +26,10 @@
     </div>
       <!-- webapp section -->
     <div class="service-item" :class=$store.state.theme_change ref="gensoft">
-      <h1 class="service">{{$t('gensoftTitle') }}
+      <h1 v-if="$store.state.language=== 'ja'" class="service" style="font-size: 23px;">{{$t('gensoftTitle') }}
+        <i :class=$store.state.theme_change class="fa fa-bug" style="color: green;"></i>
+      </h1> 
+      <h1 v-else class="service">{{$t('gensoftTitle') }}
         <i :class=$store.state.theme_change class="fa fa-bug" style="color: green;"></i>
       </h1> 
       <div class="service-about">{{$t('gensoftdevAbout')}}</div>
@@ -83,17 +86,17 @@
             </div>
             <div class="columns is-multiline">
                 <div class="column is-12 box">
-                  <h2 style= "text-align: center;" class="form-sub subtitle has-text-black has-text-center is-underlined">{{$t('contactmodal.contactHeader')}}</h2>
+                  <h2 style= "text-align: center;" class="form-sub subtitle has-text-black has-text-center">{{$t('contactmodal.contactHeader')}}</h2>
                   <!-- <p class="has-text-danger mb-4">* All fields are required</p> -->
                   <div class="columns is-multiline">
                     <div class="column is-6">
                       <!-- name errors-->
-                      <div v-if="errors.nameErrors.length">
+                      <div v-if="errors.nameErrors.length" style="margin-top: 1rem;">
                           <p class="my-errors" style="color:red" v-for="error in errors.nameErrors" v-bind:key="error">
                           <span style="color:red !important">*</span> {{ error }}
                           </p>                        
                       </div>
-                      <div class="field">
+                      <div class="field" style="margin-top: 1.2rem;">
                         <label class="my-label has-text-black">{{$t('contactmodal.name')}}</label>
                         <div class="control">
                             <input type="text" class="input" :placeholder="$t('contactmodal.placeholdername')" v-model="name">
@@ -111,32 +114,15 @@
                             <input type="email" class="input" placeholder="123@my-email.com" v-model="email">
                         </div>
                       </div>
-                      <!-- phone errors-->
-                      <div v-if="errors.phoneErrors.length">
-                          <p class="my-errors" style="color:red" v-for="error in errors.phoneErrors" v-bind:key="error">
-                          <span style="color:red !important">*</span> {{ error }}
-                          </p>                        
-                      </div>
+                      <!-- services dropdown -->
                       <div class="field">
-                        <label class="my-label has-text-black">{{$t('contactmodal.phone')}}</label>
+                        <label class="my-label has-text-black">{{$t('contactmodal.services')}}</label>
                         <div class="control">
-                            <input type="text" class="input" :placeholder="$t('contactmodal.placeholderphone')" v-model="phone">
+                            <input type="text" class="input" :placeholder="$t('contactmodal.placeholderservices')" v-model="services">
                         </div>
-                      </div>
+                      </div>                      
                   </div>
                   <div class="column is-6">
-                    <!-- services errors-->
-                    <div v-if="errors.servicesErrors.length">
-                        <p class="my-errors" style="color:red" v-for="error in errors.servicesErrors" v-bind:key="error">
-                        <span style="color:red !important">*</span> {{ error }}
-                        </p>                        
-                    </div>
-                    <div class="field">
-                      <label class="my-label has-text-black">{{$t('contactmodal.services')}}</label>
-                      <div class="control">
-                          <input type="text" class="input" :placeholder="$t('contactmodal.placeholderservices')" v-model="services">
-                      </div>
-                    </div>
                     <!-- message errors-->
                     <div v-if="errors.msgErrors.length">
                         <p class="my-errors" style="color:red" v-for="error in errors.msgErrors" v-bind:key="error">
@@ -202,15 +188,12 @@ export default {
       modalOpened: false,
       name: '',
       email: '',
-      phone: '',
       services: '',
       msgs: '',
       errors: {
               generalErrors: [],
               nameErrors: [],
               emailErrors: [],
-              phoneErrors: [],
-              servicesErrors: [],
               msgErrors: []
           }
     }
@@ -312,14 +295,11 @@ export default {
     clearFields() {
       this.name = ''
       this.email = ''
-      this.phone = ''
       this.services = ''
       this.msgs = ''
       this.errors.generalErrors = []
       this.errors.nameErrors = []
       this.errors.emailErrors = []
-      this.errors.phoneErrors = []
-      this.errors.servicesErrors = []
       this.errors.msgErrors = []
     },
 
