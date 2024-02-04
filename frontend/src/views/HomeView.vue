@@ -162,7 +162,7 @@
                   </div>
                   <!-- weak human checking -->
                   <div class="math-test">
-                    <p :hidden="solvedEquation" style="padding-top: 1.3rem; padding-right: 1rem;">{{addend1}} + {{addend2}} = </p>
+                    <p :hidden="solvedEquation" style="white-space: nowrap; padding-top: 1.3rem; padding-right: 1rem;">{{addend1}} + {{addend2}} = </p>
                     <textarea :hidden="solvedEquation" v-model="userAnswer" class="math-test-textarea" style="resize: none;" maxlength="2" resize="none"></textarea>
                     <button @click.stop="checkMath();" :hidden="solvedEquation" :disabled="checkingAnswer" class="my-button-math">
                       {{$t('submitanswer')}}                    
