@@ -9,3 +9,4 @@ venv/
 *.jpeg
 *.zip
 logs.txt
+/servers_ssl_db_setup
