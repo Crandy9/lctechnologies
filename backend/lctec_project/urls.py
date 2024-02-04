@@ -12,7 +12,7 @@ urlpatterns = [
     # djoser library is a REST implementation of Django authentication system
     path('api/lctec/v1/', include('djoser.urls')),
     path('api/lctec/v1/', include('djoser.urls.authtoken')),
-    # path('api/lctec/v1/', include ('lctec_user.urls')),
+    path('api/lctec/v1/', include ('form_data.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

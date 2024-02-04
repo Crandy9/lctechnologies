@@ -96,6 +96,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # this has to go above CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,12 +105,12 @@ MIDDLEWARE = [
 ]
 
 # frontend server. Change to live server address for production
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:8080",
-#     "http://localhost:8080",
-#     "https://sheriffcrandymusic.local:9443",
-#     "https://sheriffcrandymusic.com"
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+    # "https://lctechnologies.local:2443/api"
+    # "https://sheriffcrandymusic.com"
+]
 
 # required to accomodate howlerjs `Accept-Ranges`: `bytes`` header
 # XMLHttpRequest (xhr) object

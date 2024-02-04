@@ -67,7 +67,7 @@
     <!-- contact button -->
     <div :class=$store.state.theme_change>
       <div>
-        <button class="my-contact-button button" @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();">
+        <button class="open-contact-modal-button button" @click="modalOpened = false; show = true; purchaseButtonClicked = true; scrollToContact();">
           {{$t('contactBtn')}}
         </button>
       </div>
@@ -93,11 +93,14 @@
                       <!-- name errors-->
                       <div v-if="errors.nameErrors.length" style="margin-top: 1rem;">
                           <p class="my-errors" style="color:red" v-for="error in errors.nameErrors" v-bind:key="error">
-                          <span style="color:red !important">*</span> {{ error }}
+                            {{ error }}
                           </p>                        
                       </div>
                       <div class="field" style="margin-top: 1.2rem;">
-                        <label class="my-label has-text-black">{{$t('contactmodal.name')}}</label>
+                        <label class="my-label has-text-black">
+                          <span style="color:red !important">*</span>
+                          {{$t('contactmodal.name')}}
+                        </label>
                         <div class="control">
                             <input type="text" class="input" :placeholder="$t('contactmodal.placeholdername')" v-model="name">
                         </div>
@@ -105,11 +108,14 @@
                       <!-- email errors-->
                       <div v-if="errors.emailErrors.length">
                           <p class="my-errors" style="color:red" v-for="error in errors.emailErrors" v-bind:key="error">
-                          <span style="color:red !important">*</span> {{ error }}
+                          {{ error }}
                           </p>                        
                       </div>
                       <div class="field">
-                        <label class="my-label has-text-black">{{$t('contactmodal.email')}}</label>
+                        <label class="my-label has-text-black">
+                          <span style="color:red !important">*</span>
+                          {{$t('contactmodal.email')}}
+                        </label>
                         <div class="control">
                             <input type="email" class="input" placeholder="123@my-email.com" v-model="email">
                         </div>
@@ -118,17 +124,20 @@
                       <div class="field">
                         <label class="my-label has-text-black">{{$t('contactmodal.services')}}</label>
                         <div class="control">
-                            <input type="text" class="input" :placeholder="$t('contactmodal.placeholderservices')" v-model="services">
+                            <select class="input" v-model="selectedService">
+                              <option style="color:rgba(0,0,0,0.4) !important" value="" disabled selected hidden>
+                                {{$t('contactmodal.placeholderservices')}}
+                              </option>
+                              <option style="color: black !important;">{{$t('contactmodal.ecommerceService')}}</option>
+                              <option style="color: black !important;">{{$t('contactmodal.webappService')}}</option>
+                              <option style="color: black !important;">{{$t('contactmodal.softwareDevService')}}</option>
+                              <option style="color: black !important;">{{$t('contactmodal.otherService')}}</option>
+                            </select>
                         </div>
                       </div>                      
                   </div>
+                  <!-- message -->
                   <div class="column is-6">
-                    <!-- message errors-->
-                    <div v-if="errors.msgErrors.length">
-                        <p class="my-errors" style="color:red" v-for="error in errors.msgErrors" v-bind:key="error">
-                        <span style="color:red !important">*</span> {{ error }}
-                        </p>                        
-                    </div>
                     <div class="field">
                       <label class="my-label has-text-black">{{$t('contactmodal.msgs')}}</label>
                       <div class="control">
@@ -140,7 +149,32 @@
                 </div>
                 <hr>
                 <footer class="card-foot">
-                  <button @click.stop="submitForm();" :disabled="formProcessing" class="my-button-contact">
+                  <!-- incorrect answer -->
+                  <div v-if="incorrectanswerError">
+                      <p class="my-errors" style="color:red">
+                        {{$t('incorrectanswerError')}}
+                      </p>                        
+                  </div>
+                  <div v-else-if="correctanswerNotification">
+                      <p class="my-errors" style="color:rgb(0, 166, 0)">
+                        {{$t('correctanswerNotification')}}
+                      </p>                        
+                  </div>
+                  <!-- weak human checking -->
+                  <div class="math-test">
+                    <p :hidden="solvedEquation" style="padding-top: 1.3rem; padding-right: 1rem;">{{addend1}} + {{addend2}} = </p>
+                    <textarea :hidden="solvedEquation" v-model="userAnswer" class="math-test-textarea" style="resize: none;" maxlength="2" resize="none"></textarea>
+                    <button @click.stop="checkMath();" :hidden="solvedEquation" :disabled="checkingAnswer" class="my-button-math">
+                      {{$t('submitanswer')}}                    
+                    </button>
+                  </div>
+                  <!-- general errors -->
+                  <div v-if="errors.generalErrors.length">
+                    <p class="my-errors" style="text-align: center; color:red; padding-bottom: 1rem; padding-inline: 2.2rem;">
+                      {{$t('generalErrors')}}
+                    </p>                        
+                  </div>
+                  <button @click.stop="submitForm();" :hidden="!solvedEquation" :disabled="formProcessing" class="my-button-contact">
                     <div class="processing-div" v-if="formProcessing">
                       <span>
                         {{$t('contactmodal.submitting')}}
@@ -161,12 +195,6 @@
             </div>
           </div>
         </div>
-        <!-- general errors -->
-        <div v-if="errors.generalErrors.length">
-          <p class="my-errors" style="text-align: center; color:red; padding-bottom: 1rem; padding-inline: 2.2rem;" v-for="error in errors.generalErrors" v-bind:key="error">
-            <span style="color:red !important">*</span> {{ error }}
-          </p>                        
-        </div>
       </div>
       </div>
     </div>
@@ -177,6 +205,8 @@
 // @ is an alias to /src
 import Landing from '@/components/Landing.vue'
 import { mapState } from "vuex";
+import axios from 'axios'
+import { toast } from 'bulma-toast'
 
 export default {
   name: 'Home',
@@ -195,7 +225,16 @@ export default {
               nameErrors: [],
               emailErrors: [],
               msgErrors: []
-          }
+          },
+      incorrectanswerError: '',
+      correctanswerNotification: '',
+      selectedService: '',
+      solvedEquation: false,
+      userAnswer: '',
+      addend1: '',
+      addend2: '',
+      equationAnswer: '',
+      checkingAnswer: false
     }
   },
   components: {
@@ -204,6 +243,9 @@ export default {
 
   mounted() {
     document.title = "LC Technologies";
+    this.addend1 = Math.floor(Math.random() * 100)
+    this.addend2 = Math.floor(Math.random() * (100 - this.addend1))
+    this.equationAnswer = this.addend1 + this.addend2;
 
   },
   computed: {
@@ -249,8 +291,116 @@ export default {
 
   methods: {
 
+    checkMath() {
+      this.checkingAnswer = true
+      this.incorrectanswerError = ''
+      this.correctanswerNotification = ''
+      this.equationAnswer = this.addend1 + this.addend2
+
+      setTimeout(() => {
+        if (this.userAnswer == this.equationAnswer) {
+
+          this.correctanswerNotification = this.$t('correctanswerNotification');
+
+          setTimeout(() => {
+            this.checkingAnswer = false;
+            this.solvedEquation = true;
+            this.correctanswerNotification = ''
+            return;
+          }, 2000); // Sleep for 2 seconds
+
+        } else {
+          this.checkingAnswer = false;
+          this.incorrectanswerError = this.$t('incorrectanswerError');
+          this.redoEquation();
+          return;
+        }
+      }, 2000);
+
+    },
+
+    redoEquation() {
+      this.addend1 = Math.floor(Math.random() * 100)
+      this.addend2 = Math.floor(Math.random() * (100 - this.addend1))
+      this.equationAnswer = this.addend1 + this.addend2;
+    },
+
     submitForm() {
+
       this.formProcessing = true;
+      console.log(this.formProcessing)
+      this.errors.generalErrors = []
+      this.errors.nameErrors = []
+      this.errors.emailErrors = []
+      this.errors.msgErrors = []
+
+      // form validation
+      if (this.name === '') {
+            this.paymentProcessing = false;
+            this.errors.nameErrors.push(this.$t('namefieldmissing'))
+            this.errors.generalErrors.push('stink')
+
+        }
+        if (this.email === '') {
+            this.paymentProcessing = false;
+            this.errors.emailErrors.push(this.$t('emailreq'))
+            this.errors.generalErrors.push('stink')
+
+        }
+        if (!this.email.includes('@')) {
+            this.paymentProcessing = false;
+            this.errors.emailErrors.push(this.$t('emailreq'))
+            this.errors.generalErrors.push('stink')
+        }
+
+      let service = ''
+      let msgs = ''
+      this.selectedService === '' ? service = 'Not Selected' : service = this.selectedService
+      this.msgs === '' ? msgs = 'No Additional Info' : msgs = this.msgs
+
+      const formData = {
+        'name': this.name,
+        'email': this.email,
+        'service': service,
+        'msgs': msgs
+      }
+
+
+      // post form data to backend
+      // send post data to backend server
+      axios
+        .post(process.env.VUE_APP_CONTACT_FORM_API_ENDPOINT, formData)
+        .then(response => {
+
+            // add toast message
+            toast({
+                message: this.$t('formSubmitted'),
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'center',
+                animate: { in: 'fadeIn', out: 'fadeOut' },
+            })
+
+            // clear all fields
+            this.show = false
+            this.clearFields()
+        })
+        // catch the error data, strip it down to category, and push
+        // each error to the appropraite error array
+        .catch(error => {
+          this.errors.generalErrors.push('There was an error cya')
+        })
+    
+
+      if (this.selectedService === "") {
+        console.log('No service chosen')
+      }
+      else {
+        console.log(this.selectedService)
+
+      }
     },
 
     scrollTo(section) {
@@ -293,10 +443,18 @@ export default {
     },
 
     clearFields() {
+      this.redoEquation();
+      this.formProcessing = false
+      this.userAnswer = ''
+      this.solvedEquation = false
+      this.checkingAnswer = false
+      this.incorrectanswerError = ''
+      this.correctanswerNotification = ''
       this.name = ''
       this.email = ''
       this.services = ''
       this.msgs = ''
+      this.selectedService = ''
       this.errors.generalErrors = []
       this.errors.nameErrors = []
       this.errors.emailErrors = []

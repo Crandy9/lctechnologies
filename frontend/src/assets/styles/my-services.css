@@ -30,8 +30,7 @@
 .service-about {
     font-size: 18px;
     padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-inline: 12rem;
 }
 
 .showcase-client-img {
@@ -44,5 +43,11 @@
 @media screen and (max-width: 1023px) {
     .showcase-client-img {
         max-width: 85%;
+    }
+
+    .service-about {
+        font-size: 18px;
+        padding-top: 1rem;
+        padding-inline: 2rem;
     }
 }
