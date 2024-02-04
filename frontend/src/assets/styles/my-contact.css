@@ -264,12 +264,12 @@ for mobile */
 }
 
 .my-button-math[disabled] {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(178, 178, 178, 0.8);
     cursor: not-allowed;
 }
 
 .my-button-math[disabled]:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(178, 178, 178, 0.8);
     cursor: not-allowed;
 }
 

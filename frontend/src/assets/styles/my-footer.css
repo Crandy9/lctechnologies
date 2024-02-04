@@ -108,6 +108,7 @@
 
 /* SNS icons */
 .social-media-div {
+    background-color: black;
     padding-top: 12rem;
     padding-right: 3rem;
     padding-left: 3rem;
@@ -124,10 +125,10 @@
     fill: rgb(255, 0, 157);
 }
 
-/* defined inline for theme toggle
+/* defined inline for theme toggle */
 .twitter path {
-    fill: rgb(0, 0, 0);
-} */
+    fill: rgb(255, 255, 255);
+}
 
 .youtube path {
     fill: red;
@@ -176,7 +177,7 @@ li.instagram, li.youtube, li.twitter, li.gab, li.apple, li.spotify, li.amazon {
     text-align: center;
     padding-top: 5rem; 
     padding-bottom: 5rem;
-    font-size: 16px;
+    font-size: 14px;
     font-family:BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 

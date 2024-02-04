@@ -41,13 +41,15 @@
       "submit": "お問い合わせを送信する"
     },
     "generalErrors": "上記のエラーを修正してください",
+    "serverError": "予期せぬエラーが発生しました。後でもう一度お試しください。",
     "emailreq": "Eメールが必須です",
     "namefieldmissing": "お名前を入力してください",
     "incorrectanswerError": "不正解、もう一度",
     "correctanswerNotification": "方程式の解は正しい！",
     "submitanswer": "答えを提出する",
     "formSubmitted": "お問い合わせいただきました。お客様のご要望をお伺いするため、担当者よりEメールにてご連絡させていただきます。ありがとうございました！",
-    "Current_Location": "現在地",
+    "Current_Location": "おおよその位置",
+    "locationNotAvailable": "利用不可",
     "Your_IP": "IPアドレス",
     "notfound": "お探しのページは存在しません。トップページに戻るにはここをクリックしてください。"
   }

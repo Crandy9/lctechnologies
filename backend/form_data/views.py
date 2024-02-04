@@ -20,13 +20,14 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import permissions, status
 from django.middleware.csrf import get_token
-from django.http import JsonResponse
 # for saving profilepic
 from PIL import Image
 from django.core.files import File
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from rest_framework.permissions import AllowAny
+from django.http import JsonResponse
+import requests
 
 # send thank you email to user after purchase
 from django.core.mail import EmailMessage
@@ -83,3 +84,28 @@ def process_form_data(request):
 
 
     return Response(status=200)
+
+
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def get_geoData(request):
+
+    userIP = request.data.get('userIP', ''),
+
+    geoAPIKey = settings.env('geoAPIKey')
+
+    payload = {'key': geoAPIKey, 'ip': userIP, 'format': 'json'}
+
+    try:
+        response = requests.get('https://api.ip2location.io/', params=payload)
+        data = response.json()
+        geolocation = {
+            'city_name': data.get('city_name', ''),
+            'region_name': data.get('region_name', ''),
+            'country_name': data.get('country_name', ''),
+        }
+        return JsonResponse(geolocation)
+    except Exception as e:
+        return JsonResponse({'error': 'Location Not Available'})

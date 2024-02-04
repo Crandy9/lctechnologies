@@ -41,13 +41,15 @@
     "submit": "Submit Inquiry"
   },
   "generalErrors": "Please fix the above errors",
+  "serverError": "An unexpected error occurred. Please try again later.",
   "emailreq": "Email is required. Please enter a valid email address",
   "namefieldmissing": "Please enter your name",
   "incorrectanswerError": "Incorrect Answer, Try Again",
   "correctanswerNotification": "You got it!",
   "submitanswer": "Submit Answer",
   "formSubmitted": "We have received your inquiry. A specialist will reach out to you soon via email to discuss your request further. Thank you!",
-  "Current_Location": "Current Location",
+  "Current_Location": "Approximate Location",
+  "locationNotAvailable": "Not Available",
   "Your_IP": "Your IP",
   "notfound": "The page you are looking for does not exist. Click here to return to the homepage."
 }

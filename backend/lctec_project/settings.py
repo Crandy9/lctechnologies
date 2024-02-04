@@ -38,7 +38,9 @@ ALLOWED_HOSTS = ['localhost',
                 '127.0.0.1',
                 'lctechnologies.local',
                 'lctechnologies.io',
-                'www.lctechnologies.io',]
+                'www.lctechnologies.io',
+                # for geodata API
+                'https://api.ip2location.io/']
 
 
 # rest framework global settings
@@ -110,7 +112,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:8080",
-    "https://lctechnologies.local:2443/api"
+    "https://lctechnologies.local:2443",
     "https://lctechnologies.io"
 ]
 

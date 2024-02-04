@@ -174,6 +174,12 @@
                       {{$t('generalErrors')}}
                     </p>                        
                   </div>
+                  <!-- backend server error -->
+                  <div v-else-if="errors.serverError.length">
+                    <p class="my-errors" style="text-align: center; color:red; padding-bottom: 1rem; padding-inline: 2.2rem;">
+                      {{$t('serverError')}}
+                    </p>                        
+                  </div>
                   <button @click.stop="submitForm();" :hidden="!solvedEquation" :disabled="formProcessing" class="my-button-contact">
                     <div class="processing-div" v-if="formProcessing">
                       <span>
@@ -224,7 +230,8 @@ export default {
               generalErrors: [],
               nameErrors: [],
               emailErrors: [],
-              msgErrors: []
+              msgErrors: [],
+              serverError: []
           },
       incorrectanswerError: '',
       correctanswerNotification: '',
@@ -292,6 +299,7 @@ export default {
   methods: {
 
     checkMath() {
+      this.formProcessing = false
       this.checkingAnswer = true
       this.incorrectanswerError = ''
       this.correctanswerNotification = ''
@@ -320,6 +328,7 @@ export default {
     },
 
     redoEquation() {
+      this.formProcessing = false;
       this.addend1 = Math.floor(Math.random() * 100)
       this.addend2 = Math.floor(Math.random() * (100 - this.addend1))
       this.equationAnswer = this.addend1 + this.addend2;
@@ -328,30 +337,40 @@ export default {
     submitForm() {
 
       this.formProcessing = true;
-      console.log(this.formProcessing)
       this.errors.generalErrors = []
       this.errors.nameErrors = []
       this.errors.emailErrors = []
       this.errors.msgErrors = []
+      this.errors.serverError = []
+
+      let errors = false
 
       // form validation
       if (this.name === '') {
-            this.paymentProcessing = false;
-            this.errors.nameErrors.push(this.$t('namefieldmissing'))
-            this.errors.generalErrors.push('stink')
+        this.formProcessing = false;
+        this.errors.nameErrors.push(this.$t('namefieldmissing'))
+        this.errors.generalErrors.push('stink')
+        errors = true
+      }
 
-        }
-        if (this.email === '') {
-            this.paymentProcessing = false;
-            this.errors.emailErrors.push(this.$t('emailreq'))
-            this.errors.generalErrors.push('stink')
+      if (this.email === '') {
+          this.formProcessing = false;
+          this.errors.emailErrors.push(this.$t('emailreq'))
+          this.errors.generalErrors.push('stink')
+          errors = true
 
-        }
-        if (!this.email.includes('@')) {
-            this.paymentProcessing = false;
-            this.errors.emailErrors.push(this.$t('emailreq'))
-            this.errors.generalErrors.push('stink')
-        }
+      }
+      if (!this.email.includes('@')) {
+          this.formProcessing = false;
+          this.errors.emailErrors.push(this.$t('emailreq'))
+          this.errors.generalErrors.push('stink')
+          errors = true
+      }
+
+      if (errors == true) {
+        
+        return
+      }
 
       let service = ''
       let msgs = ''
@@ -378,7 +397,7 @@ export default {
                 type: 'is-success',
                 dismissible: true,
                 pauseOnHover: true,
-                duration: 2000,
+                duration: 10000,
                 position: 'center',
                 animate: { in: 'fadeIn', out: 'fadeOut' },
             })
@@ -390,17 +409,9 @@ export default {
         // catch the error data, strip it down to category, and push
         // each error to the appropraite error array
         .catch(error => {
-          this.errors.generalErrors.push('There was an error cya')
+          this.formProcessing = false;
+          this.errors.serverError.push('There was an error cya')
         })
-    
-
-      if (this.selectedService === "") {
-        console.log('No service chosen')
-      }
-      else {
-        console.log(this.selectedService)
-
-      }
     },
 
     scrollTo(section) {
@@ -459,6 +470,7 @@ export default {
       this.errors.nameErrors = []
       this.errors.emailErrors = []
       this.errors.msgErrors = []
+      this.errors.serverError = []
     },
 
   }
