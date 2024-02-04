@@ -36,7 +36,9 @@ SECRET_KEY = env('SECRET_KEY')
 # add digitalocean vps ip 
 ALLOWED_HOSTS = ['localhost', 
                 '127.0.0.1',
-                'lctechnologies.local']
+                'lctechnologies.local',
+                'lctechnologies.io',
+                'www.lctechnologies.io',]
 
 
 # rest framework global settings
@@ -108,8 +110,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:8080",
-    # "https://lctechnologies.local:2443/api"
-    # "https://sheriffcrandymusic.com"
+    "https://lctechnologies.local:2443/api"
+    "https://lctechnologies.io"
 ]
 
 # required to accomodate howlerjs `Accept-Ranges`: `bytes`` header
