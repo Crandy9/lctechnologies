@@ -65,7 +65,12 @@ def process_form_data(request):
         'cust_email': request.data.get('email', ''),
         'service': request.data.get('service', ''),
         'details': request.data.get('msgs', ''),
-    })  
+    })
+
+    # dont send email if name or email is empty
+    if request.data.get('name', '') == '' or request.data.get('email', '') == '':
+        return Response(status=200)
+
     # send thankyou email to user
     email = EmailMessage(
         # email subject title default is 'subject'
