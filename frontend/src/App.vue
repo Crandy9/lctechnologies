@@ -430,7 +430,13 @@ export default {
         // pass IP to backend
         axios.get(process.env.VUE_APP_GET_GEO_DATA, userIP)
           .then(response => {
-            this.$store.state.geolocation = response.data.city_name + ", " + response.data.region_name + ", " + response.data.country_name;
+            if (response.data.includes('Singapore')) {
+              this.$store.state.geolocation = (this.$t('locationNotAvailable'))
+            }
+            else {
+              this.$store.state.geolocation = response.data.city_name + ", " + response.data.region_name + ", " + response.data.country_name;
+            }
+
           })
           .catch(error => {
             // this.$store.state.geolocation = "Location Not Available";
