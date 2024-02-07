@@ -106,6 +106,7 @@ def get_geoData(request):
     try:
         response = requests.get('https://api.ip2location.io/', params=payload)
         data = response.json()
+        logger.log(str(data))
         geolocation = {
             'city_name': data.get('city_name', ''),
             'region_name': data.get('region_name', ''),
