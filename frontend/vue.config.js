@@ -1,7 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-
+  productionSourceMap: false in vue.config.js ,
+  
   pluginOptions: {
     i18n: {
       locale: 'en',
