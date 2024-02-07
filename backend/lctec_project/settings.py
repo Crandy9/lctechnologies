@@ -33,14 +33,17 @@ SECRET_KEY = env('SECRET_KEY')
 # STRIPE_SK = env("STRIPESK")
 # STRIPE_DOMAIN = env("STRIPE_DOMAIN")
 
-# add digitalocean vps ip 
 ALLOWED_HOSTS = ['localhost', 
                 '127.0.0.1',
                 'lctechnologies.local',
                 'lctechnologies.io',
                 'www.lctechnologies.io',
                 # for geodata API
-                'https://api.ip2location.io/']
+                'https://api.ip2location.io/',
+                # add digitalocean vps ip 
+                '137.184.248.73'
+            ]
+                
 
 
 # rest framework global settings
