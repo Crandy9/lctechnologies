@@ -35,3 +35,10 @@
     color: rgb(0, 172, 214);
 	transition: all 0.2s ease-in;
 }
+
+/* align icon over menu items */
+@media  screen and (max-width: 1023px) {
+    .gg-moon, .gg-sun {
+        margin-left: 0.5rem;
+    }
+}
