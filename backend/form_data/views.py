@@ -106,12 +106,15 @@ def get_geoData(request):
     try:
         response = requests.get('https://api.ip2location.io/', params=payload)
         data = response.json()
-        logger.log(str(data))
+
         geolocation = {
             'city_name': data.get('city_name', ''),
             'region_name': data.get('region_name', ''),
             'country_name': data.get('country_name', ''),
         }
+        
+        logger.info(str(data))
+        logger.info(str(geolocation))
         return JsonResponse(geolocation)
     except Exception as e:
         return JsonResponse({'error': 'Location Not Available'})

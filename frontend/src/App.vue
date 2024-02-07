@@ -440,6 +440,11 @@ export default {
         axios.get(process.env.VUE_APP_GET_GEO_DATA, userIP)
           .then(response => {
 
+            console.log(JSON.stringify(response.data))
+            console.log(JSON.stringify(response.data.city_name))
+            console.log(JSON.stringify(response.data.region_name))
+            console.log(JSON.stringify(response.data.country_name))
+
             this.$store.state.geolocation = response.data.city_name + ", " + response.data.region_name + ", " + response.data.country_name;
 
           })
