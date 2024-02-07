@@ -97,7 +97,7 @@ def process_form_data(request):
 @permission_classes([])
 def get_geoData(request):
 
-    userIP = request.data.get('userIP', ''),
+    userIP = request.data.get('userIP', '')
 
     geoAPIKey = settings.env('geoAPIKey')
 
@@ -112,9 +112,19 @@ def get_geoData(request):
             'region_name': data.get('region_name', ''),
             'country_name': data.get('country_name', ''),
         }
-        
-        logger.info(str(data))
-        logger.info(str(geolocation))
+
+        if geolocation['city_name'] is "Singapore":
+                
+            payload = {'key': geoAPIKey, 'ip': userIP2, 'format': 'json'}
+            response = requests.get('https://api.ip2location.io/', params=payload)
+            data = response.json()
+
+            geolocation = {
+                'city_name': data.get('city_name', ''),
+                'region_name': data.get('region_name', ''),
+                'country_name': data.get('country_name', ''),
+            }
+
         return JsonResponse(geolocation)
     except Exception as e:
         return JsonResponse({'error': 'Location Not Available'})
