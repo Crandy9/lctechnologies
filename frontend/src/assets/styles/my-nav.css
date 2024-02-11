@@ -213,12 +213,16 @@
     }
 }
 
+.navbar-brand {
+    padding-top: 0.7rem;
+    padding-inline: 0.4rem;
+}
 
 /* when navbar menu collapses under hamburger */
 @media screen and (max-width: 1023px) {
 
     .navbar-brand {
-        padding-top: 0.7rem;
+        padding-top: 0.5rem;
         padding-inline: 0.4rem;
     }
 
