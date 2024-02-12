@@ -40,8 +40,10 @@ ALLOWED_HOSTS = ['localhost',
                 'www.lctechnologies.io',
                 # for geodata API
                 'https://api.ip2location.io/',
-                # add digitalocean vps ip 
-                '137.184.248.73'
+                # add sheriffcrandy digitalocean droplet reserved public ip 
+                '137.184.248.73',
+                # add sheriffcrandy digitalocean droplet public ip 
+                '143.198.84.78'                
             ]
                 
 
