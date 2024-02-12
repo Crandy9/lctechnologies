@@ -301,8 +301,8 @@
                   class="icon gab" 
                   rel="noopener" 
                   target="_blank" 
-                  title="https://tv.gab.com/channel/sheriffcrandy"
-                  href="#">
+                  title="https://gab.com/LCTechnologies"
+                  href="https://gab.com/LCTechnologies">
                   <!-- viewbox 
                   min-x (horizontal axis), 
                   min-y (vertical axis),

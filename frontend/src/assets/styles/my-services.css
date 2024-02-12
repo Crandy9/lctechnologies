@@ -51,3 +51,22 @@
         padding-inline: 2rem;
     }
 }
+
+/* clients list */
+.my-clients-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 1023px) {
+
+    .my-clients-display {
+        margin-bottom: 5rem;
+        display: block;
+    }
+    
+}
+
+.client-item {
+    padding-bottom: 10rem;
+}

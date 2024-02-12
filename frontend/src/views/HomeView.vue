@@ -43,25 +43,35 @@
         <li>- {{$t('gensoftPart6')}}</li>
       </ul>
     </div>    
-    <!-- Our work -->
+    <!-- Our Clients -->
     <div :class=$store.state.theme_change>
       <h1 class="service-header">{{$t('clients')}}</h1>
-      <!-- kaoru art gallery -->
-      <div class="service-item" :class=$store.state.theme_change>
-        <h1 class="service">
-          <a style="color: inherit;" href="https://kaoruartgallery.com" target="_blank">Kaoru Art Gallery</a>
-        </h1> 
-        <a style="color: inherit;" href="https://kaoruartgallery.com" target="_blank">
-          <img class="showcase-client-img" src="@/assets/images/kag_scrnshot.png" alt="">
-        </a>
-      </div>
-      <div class="service-item" :class=$store.state.theme_change>
-        <h1 class="service">
-          <a style="color: inherit;" href="https://sheriffcrandymusic.com" target="_blank">Sheriff Crandy Music</a>
-        </h1> 
-        <a style="color: inherit;" href="https://sheriffcrandymusic.com" target="_blank">
-          <img class="showcase-client-img" src="@/assets/images/sf_scrnshot.png" alt="">
-        </a>
+      <div class="my-clients-display">
+        <!-- kaoru art gallery -->
+        <div class="client-item" :class=$store.state.theme_change>
+          <!-- <h1 class="service">
+            <a style="color: inherit;" href="https://kaoruartgallery.com" target="_blank">Kaoru Art Gallery</a>
+          </h1>  -->
+          <a 
+            style="color: inherit;" 
+            href="https://kaoruartgallery.com/gallery" 
+            target="_blank" 
+            title="https://kaoruartgallery.com/gallery">
+            <img class="showcase-client-img" src="@/assets/images/kag_banner.png" alt="">
+          </a>
+        </div>
+        <div class="client-item" :class=$store.state.theme_change>
+          <h1 class="service">
+            <a style="color: inherit;" href="https://sheriffcrandymusic.com/music" target="_blank" title="https://sheriffcrandymusic.com/music">Sheriff Crandy Music</a>
+          </h1> 
+          <a 
+            style="color: inherit;" 
+            href="https://sheriffcrandymusic.com/music" 
+            target="_blank" 
+            title="https://sheriffcrandymusic.com/music">            
+            <img class="showcase-client-img" src="@/assets/images/sc_piano.jpg" alt="">
+          </a>
+        </div>
       </div>
     </div>
     <!-- contact button -->
