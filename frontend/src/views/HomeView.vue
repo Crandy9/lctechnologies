@@ -1,6 +1,6 @@
 <template>
   <div class="home" style="margin-top: 4rem;">
-    <img class="feather" alt="lctec" src="../assets/images/lctec_icon_rounded.png">
+    <img alt="lctec" class="feather" src="../assets/images/lctec_icon_rounded.png">
     <!-- import landing component -->
     <Landing />
   </div>
@@ -57,7 +57,7 @@
             href="https://kaoruartgallery.com/gallery" 
             target="_blank" 
             title="https://kaoruartgallery.com/gallery">
-            <img class="showcase-client-img" src="@/assets/images/kag_banner.png" alt="">
+            <img alt="lctec" class="showcase-client-img" src="@/assets/images/kag_banner.png">
           </a>
         </div>
         <div class="client-item" :class=$store.state.theme_change>
@@ -69,7 +69,7 @@
             href="https://sheriffcrandymusic.com/music" 
             target="_blank" 
             title="https://sheriffcrandymusic.com/music">            
-            <img class="showcase-client-img" src="@/assets/images/sc_piano.jpg" alt="">
+            <img alt="lctec" class="showcase-client-img" src="@/assets/images/sc_piano.jpg">
           </a>
         </div>
       </div>

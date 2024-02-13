@@ -352,12 +352,12 @@
           <p class="company_link">
             &copy; 2022-2024 | 
             LC Technologies 
-            <img class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
+            <img alt="lctec_icon" class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
           </p>
             <!-- <a class="company_link"
                 href="https://lctechnologies.azurewebsites.net/" target="_blank">
               LC Technologies
-              <img class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
+              <img alt="lctec_icon" class="lctec-icon" type="image/png" src="../src/assets/images/lctec_icon_rounded.png">
             </a> 				 -->
             Linden Crandall
         </div>           
