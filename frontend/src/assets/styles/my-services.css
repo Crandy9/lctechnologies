@@ -15,6 +15,12 @@
     padding-bottom: 4rem;
 }
 
+@media  screen and (max-width:1023px) {
+    .service-header {
+        margin-inline: 1rem;
+    }
+}
+
 
 .service {
     padding-inline: 2rem;

@@ -435,7 +435,6 @@ export default {
           'userIP': this.$store.state.userIP
         }
 
-        console.log(JSON.stringify(userIP))
         // pass IP to backend
         axios.get(process.env.VUE_APP_GET_GEO_DATA, userIP)
           .then(response => {
