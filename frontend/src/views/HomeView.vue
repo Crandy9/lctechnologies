@@ -60,6 +60,7 @@
             <img alt="lctec" class="showcase-client-img" src="@/assets/images/kag_banner.png">
           </a>
         </div>
+        <!-- lc technologies -->
         <div class="client-item" :class=$store.state.theme_change>
           <h1 class="service">
             <a style="color: inherit;" href="https://sheriffcrandymusic.com/music" target="_blank" title="https://sheriffcrandymusic.com/music">Sheriff Crandy Music</a>
