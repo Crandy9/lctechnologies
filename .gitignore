@@ -8,5 +8,6 @@ venv/
 *.jpg
 *.jpeg
 *.zip
+*.webp
 logs.txt
 /servers_ssl_db_setup

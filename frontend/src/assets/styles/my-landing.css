@@ -9,15 +9,32 @@
 }
 
 .my-landing {
+    display: inline-block;
     margin-inline: 3rem;
 }
 
 .scripture_quote {
     padding-top: 2rem;
     font-weight: bold;
+    /* font-family: monospace;
+    width: 100%;    
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+        typing 6s steps(102); */
+}
+
+@keyframes typing {
+    from { width: 0 }
 }
 
 .scripture {
     font-style: italic;
     padding-bottom: 2rem;
+/* 
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+        typing 5s steps(20);     */
 }

@@ -6,17 +6,18 @@ export default createStore({
     region:  localStorage.getItem("region") || 'US',
     geolocation: null,
     userIP: null,
-    isDarkTheme: false,
-    theme_change: "lightTheme",
+    isDarkTheme: true,
+    theme_change: "darkTheme",
     theme: '',
     bgColorDark: 'rgb(22 32 47)',
-    bgColorLight: 'rgb(243 254 255)',
+    bgColorLight: 'rgb(219 248 253)',
     hamburgerBgColor: '#f2fafb',
     scrollingToEcommerce: false,
     scrollingToWebApp: false,
     scrollingToContact: false,
     scrollingToOffering: false,
-    scrollingToGenSoft: false
+    scrollingToGenSoft: false,
+    scrollingToPricing: false
 
   },
   getters: {
@@ -28,20 +29,24 @@ export default createStore({
     scrollTo(state, section) {
 
       if (section === "ecommerce") {
-        state.scrollingToEcommerce = true;
+        state.scrollingToEcommerce = !state.scrollingToEcommerce;
       }
       else if (section === "webapp") {
-        state.scrollingToWebApp = true;
+        state.scrollingToWebApp = !state.scrollingToWebApp;
       }
       else if (section === "contact") {
-        state.scrollingToContact = true;
+        state.scrollingToContact = !state.scrollingToContact;
       }
       else if (section === "offering") {
-        state.scrollingToOffering = true;
+        state.scrollingToOffering = !state.scrollingToOffering;
       }
       else if (section === "gensoft") {
-        state.scrollingToGenSoft = true;
+        state.scrollingToGenSoft = !state.scrollingToGenSoft;
       }
+      else if (section === "pricing") {
+        state.scrollingToPricing = !state.scrollingToPricing;
+      }      
+
     },
 
     toggleTheme(state) {

@@ -13,11 +13,46 @@
     z-index: 9999;
 }
 
-/* Sheriff Crandy logo */
-.logo {
-    margin: 2rem;
+
+.my-logo {
+    margin-top: 0.01rem;
+    margin-left: 1.5rem;
 }
 
+.lctec-logo-img {
+    max-width: 13%;
+    border-radius: 50%;
+    transition: box-shadow 0.325s ease-in-out;
+}
+
+ .lctec-logo-img:hover {
+	box-shadow: 0 0 15px 0 rgb(255, 0, 128);
+    
+}
+
+@media screen and (max-width: 1023px) {
+
+    .my-logo {
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+    }    
+    .lctec-logo-img {
+        max-width: 11.5%;
+        box-shadow: 0 0 8px 0 rgb(255, 0, 128);
+    }
+}
+
+
+@media screen and (max-width: 685px) {
+
+    .my-logo {
+        margin-top: 0.01rem;
+        margin-left: 0.5rem;
+    }    
+    .lctec-logo-img {
+        max-width: 10%;
+    }
+}
 
   /* remove nav link background */
 .navbar-item {
@@ -37,6 +72,7 @@
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
+    margin-top: 1rem;
 }
 
 .my-services-button {

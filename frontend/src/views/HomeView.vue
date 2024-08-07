@@ -1,6 +1,6 @@
 <template>
-  <div class="home" style="margin-top: 4rem;">
-    <img alt="lctec" class="feather" src="../assets/images/lctec_icon_rounded.png">
+  <div class="home" style="margin-top: 6rem;">
+    <!-- <img alt="lctec" class="feather" src="../assets/images/lctec_icon_rounded.png"> -->
     <!-- import landing component -->
     <Landing />
   </div>
@@ -10,7 +10,7 @@
       <h1 class="service-header">{{$t('whatweofferTitle')}}</h1>
     </div>
     <!-- eCommerce section -->
-    <div class="service-item" :class=$store.state.theme_change ref="eCommerce">
+    <div class="service-item" :class=$store.state.theme_change ref="ecommerce">
       <h1 class="service">{{$t('eCommerceTitle')}}
         <i :class=$store.state.theme_change class="fas fa-shopping-cart" style="color: rgb(247 124 73)"></i>
       </h1>
@@ -18,13 +18,13 @@
       </div>
     </div>
       <!-- webapp section -->
-    <div class="service-item" :class=$store.state.theme_change ref="webAppDesign">
+    <div class="service-item" :class=$store.state.theme_change ref="webapp">
       <h1 class="service">{{$t('web_designTitle')}}
         <i :class=$store.state.theme_change class="fa fa-globe" style="color: rgb(0, 140, 255);"></i>
       </h1> 
       <div class="service-about">{{$t('web_designAbout')}}</div>
     </div>
-      <!-- webapp section -->
+      <!-- Software Development section -->
     <div class="service-item" :class=$store.state.theme_change ref="gensoft">
       <h1 v-if="$store.state.language=== 'ja'" class="service" style="font-size: 23px;">{{$t('gensoftTitle') }}
         <i :class=$store.state.theme_change class="fa fa-bug" style="color: green;"></i>
@@ -42,7 +42,7 @@
         <li>- {{$t('gensoftPart5')}}</li>
         <li>- {{$t('gensoftPart6')}}</li>
       </ul>
-    </div>    
+    </div>     
     <!-- Our Clients -->
     <div :class=$store.state.theme_change>
       <h1 class="service-header">{{$t('clients')}}</h1>
@@ -215,6 +215,7 @@
       </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -427,29 +428,16 @@ export default {
 
     scrollTo(section) {
 
-      const offset = 10; // Set your desired offset in pixels
-      if (section === "ecommerce") {
+      this.$store.commit('scrollTo', section)
 
-        this.$nextTick(() => this.$refs["eCommerce"].scrollIntoView({ behavior: "smooth" }))
-        this.$store.state.scrollingToEcommerce = false
-      }
-      else if (section === "webapp") {
-        this.$nextTick(() => this.$refs["webAppDesign"].scrollIntoView({ behavior: "smooth" }))
-        this.$store.state.scrollingToWebApp = false
-      }
-      else if (section === "contact") {
+      if (section === "contact") {
         this.modalOpened = true;
         this.show = true;
         this.$nextTick(() => this.$refs["formTop"].scrollIntoView({ behavior: "smooth" }))
-        this.$store.state.scrollingToContact = false      
-      }
-      else if (section === "offering") {
-        this.$nextTick(() => this.$refs["offering"].scrollIntoView({ behavior: "smooth" }))
-        this.$store.state.scrollingToOffering = false    
-      }
-      else if (section === "gensoft") {
-        this.$nextTick(() => this.$refs["gensoft"].scrollIntoView({ behavior: "smooth" }))
-        this.$store.state.scrollingToGenSoft = false    
+      }  
+      
+      else {
+        this.$nextTick(() => this.$refs[section].scrollIntoView({ behavior: "smooth" }))
       }
     },
 

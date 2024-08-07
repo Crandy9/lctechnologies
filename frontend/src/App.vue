@@ -1,15 +1,12 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-
     <!-- logo and hamburger menu -->
     <div class="navbar-brand">
-        <!-- logo name -->
-        <div class="navbar-brand">
-          <router-link to="/" class="logo">
-            <p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>
-          </router-link>
-        </div>
-        <!-- hamburger menu -->
+        <!--<p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>-->
+        <a href="/" class="navbar-brand my-logo" id="banner">
+          <img class="lctec-logo-img" src="../src/assets/images/3logo.webp" alt="LC Tech logo">          
+        </a>        
+        <!-- hamburger button -->
         <a
             @click="hamburgerClicked = !hamburgerClicked"
             role="button" 
@@ -27,6 +24,7 @@
             </div>
         </a>
     </div>
+    <!-- hamburger menu -->
     <div
       class="my-navbar-menu" 
       id="my-navbar-menu"
@@ -154,7 +152,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </nav>
   <div class="content-wrapper">
@@ -362,6 +359,11 @@
             Linden Crandall
         </div>           
       </footer>
+      <div v-if="showScrollArrow" class="scroll-top-btn-container">
+        <span class="my-scroll-up-btn-span" @click="scrollToTop()">
+            <i class="fas fa-solid fa-arrow-up my-scroll-up-btn-arrow"></i>
+        </span>
+    </div>          
 </template>
 
 <style lang="scss">
@@ -404,6 +406,8 @@ export default {
   data () {
     return {
       hamburgerClicked: false,
+      showScrollArrow: false,
+      windowTop: 0,
 
     }
   },
@@ -412,6 +416,17 @@ export default {
   beforeCreate() {
 
   },
+
+  created() {
+      window.addEventListener('scroll', this.handleScroll, true);     
+
+  },
+
+  destroyed() {
+      window.removeEventListener('scroll', this.handleScroll, true);     
+
+  },  
+
   components: {
     HomeView,
   },
@@ -472,12 +487,12 @@ export default {
 
     }
 
-    if (localStorage.getItem('theme') == 'darkTheme') {
+    if (localStorage.getItem('theme') == 'lightTheme') {
 
-        this.$store.commit('setTheme', 'darkTheme')
+        this.$store.commit('setTheme', 'lightTheme')
     }
     else {
-      this.$store.commit('setTheme', 'lightTheme')
+      this.$store.commit('setTheme', 'darkTheme')
 
     }
 
@@ -572,6 +587,14 @@ export default {
 
   // methods 
   methods: {
+
+    handleScroll(e) {
+        this.windowTop = e.target.scrollTop;
+        this.showScrollArrow = this.windowTop > 140;
+    },
+    scrollToTop() {
+        document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },       
 
     closeNav: function() {
       current_width = window.innerWidth;

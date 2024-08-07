@@ -12,6 +12,22 @@
     object-fit: contain;
 }
 
+
+.scroll-top-btn-container {
+    position: fixed;
+    bottom: 35px;
+    right: 70px;
+    z-index: 990;
+    cursor: pointer;
+}
+
+.my-scroll-up-btn-arrow {
+    background-color: rgba(0,0,0,0.8); 
+    font-size: 30px;
+    color: white;
+    padding: 0.5rem;
+} 
+
 /* footer bg img for mobile */
 @media screen and (max-width: 1024px) {
     .my-footer {
@@ -31,7 +47,48 @@
     .social-media-div {
         padding-top: 1rem !important;
     }
+
+    .scroll-top-btn-container {
+        position: fixed;
+        bottom: 35px;
+        right: 60px;
+        z-index: 990;
+        cursor: pointer;
+    }
+    
+    .my-scroll-up-btn-arrow {
+        background-color: rgba(0,0,0,0.8); 
+        font-size: 25px; 
+    }      
 }
+
+@media screen and (max-width: 844px) {
+
+    .scroll-top-btn-container {
+        position: fixed;
+        bottom: 25px;
+        right: 35px;
+        z-index: 990;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .scroll-top-btn-container {
+        position: fixed;
+        bottom: 25px;
+        right: 40px;
+        z-index: 990;
+        cursor: pointer;
+    }
+    
+    .my-scroll-up-btn-arrow {
+        background-color: rgba(0,0,0,0.8); 
+        font-size: 20px;
+    }  
+}
+
 
 /* location beacon for footer */
 .location-beacon {
