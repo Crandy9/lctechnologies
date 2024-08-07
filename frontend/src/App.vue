@@ -93,6 +93,13 @@
             </div>
           </div>
         </div> 
+        <!-- pricing -->
+        <div class="navbar-item my-dropdown">
+          <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" @click="hamburgerClicked = false; scrollTo('pricing')">
+            {{$t('pricingTitle')}}                         
+          </button>          
+        </div>          
+        <!-- contact -->
         <div class="navbar-item my-dropdown">
           <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" @click="hamburgerClicked = false; scrollTo('contact')">
             {{$t('contact')}}                         

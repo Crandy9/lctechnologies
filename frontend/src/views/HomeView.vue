@@ -75,6 +75,12 @@
         </div>
       </div>
     </div>
+    <!-- pricing section -->
+    <div class="service-item" :class=$store.state.theme_change ref="pricing">
+      <h1 class="service">{{$t('pricingTitle')}}
+      </h1> 
+      <div class="service-about">{{$t('pricingAbout')}}</div>
+    </div>       
     <!-- contact button -->
     <div :class=$store.state.theme_change>
       <div>
@@ -273,6 +279,7 @@ export default {
     ...mapState(["scrollingToContact"]),
     ...mapState(["scrollingToOffering"]),
     ...mapState(["scrollingToGenSoft"]),
+    ...mapState(["scrollingToPricing"]),
 
   },
 
@@ -285,6 +292,11 @@ export default {
       }
     },
 
+    scrollingToPricing(scrolling) {
+      if (scrolling === true) {
+        this.scrollTo('pricing');
+      }
+    },
     scrollingToWebApp(scrolling) {
       if (scrolling === true) {
         this.scrollTo('webapp');
