@@ -17,7 +17,7 @@ export default createStore({
     scrollingToContact: false,
     scrollingToOffering: false,
     scrollingToGenSoft: false,
-    scrollingToPricing: false
+    // scrollingToPricing: false
 
   },
   getters: {
@@ -43,9 +43,9 @@ export default createStore({
       else if (section === "gensoft") {
         state.scrollingToGenSoft = !state.scrollingToGenSoft;
       }
-      else if (section === "pricing") {
-        state.scrollingToPricing = !state.scrollingToPricing;
-      }      
+      // else if (section === "pricing") {
+      //   state.scrollingToPricing = !state.scrollingToPricing;
+      // }      
 
     },
 
