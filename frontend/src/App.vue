@@ -1,32 +1,24 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <!-- logo and hamburger menu -->
     <div class="navbar-brand">
-        <!--<p :class="$store.state.theme_change" style="display:block; font-weight: bolder;">LC Technologies</p>-->
-        <a href="/" class="navbar-brand my-logo" id="banner">
+      <a href="/" class="navbar-brand my-logo" id="banner">
           <img class="lctec-logo-img" src="../src/assets/images/3logo.webp" alt="LC Tech logo">          
-        </a>        
-        <!-- hamburger button -->
-        <a
-            @click="hamburgerClicked = !hamburgerClicked"
-            role="button" 
-            class="my-burger" 
-            aria-label="menu" 
-            aria-expanded="false" 
-            data-target="my-navbar-menu" 
-            v-bind:class="{'is-active':hamburgerClicked}">
-            <div :class="$store.state.theme_change" >
-              <!-- top stroke of hamburger button -->
-              <span aria-hidden="true"></span>
-              <!-- middle stroke. Uncomment for three stroke icon, leave as is for two stroke -->
-              <!-- <span aria-hidden="true"></span> -->
-              <span aria-hidden="true"></span>
-            </div>
-        </a>
-    </div>
+      </a>
+      <a @click="hamburgerClicked = !hamburgerClicked"
+          role="button" 
+          class="my-burger" 
+          aria-label="menu" 
+          aria-expanded="false" 
+          data-target="my-navbar-menu" 
+          v-bind:class="{'is-active':hamburgerClicked}">
+          <div :class="$store.state.theme_change" >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </div>
+      </a>
+    </div>  
     <!-- hamburger menu -->
-    <div
-      class="my-navbar-menu" 
+    <div class="my-navbar-menu" 
       id="my-navbar-menu"
       v-bind:class="{'is-active':hamburgerClicked}"
       :style="hamburgerClicked === true ? 'width: 100%; background-color: ' + $store.state.hamburgerBgColor : 'width: ' + closeNav">

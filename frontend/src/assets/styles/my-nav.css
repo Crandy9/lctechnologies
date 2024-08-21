@@ -17,11 +17,12 @@
 .my-logo {
     margin-top: 0.01rem;
     margin-left: 1.5rem;
+    width: 100px;
 }
 
 .lctec-logo-img {
-    max-width: 13%;
-    border-radius: 50%;
+    min-width: 150%;
+    border-radius: 25%;
     transition: box-shadow 0.325s ease-in-out;
 }
 
@@ -37,7 +38,7 @@
         margin-left: 1rem;
     }    
     .lctec-logo-img {
-        max-width: 11.5%;
+        min-width: 125%;
         box-shadow: 0 0 8px 0 rgb(255, 0, 128);
     }
 }
@@ -50,7 +51,7 @@
         margin-left: 0.5rem;
     }    
     .lctec-logo-img {
-        max-width: 10%;
+        min-width: 100%;
     }
 }
 
