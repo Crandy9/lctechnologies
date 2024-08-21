@@ -14,7 +14,13 @@
       <h1 class="service">{{$t('eCommerceTitle')}}
         <i :class=$store.state.theme_change class="fas fa-shopping-cart" style="color: rgb(247 124 73)"></i>
       </h1>
-      <div class="service-about">{{$t('eCommerceAbout')}}
+      <div class="service-about">
+        <span>
+          {{$t('eCommerceAbout')}}
+        </span>
+        <p style="padding-top: 1rem;">
+          {{$t('eCommerceStartingPrice')}}
+        </p>
       </div>
     </div>
       <!-- webapp section -->
@@ -22,7 +28,14 @@
       <h1 class="service">{{$t('web_designTitle')}}
         <i :class=$store.state.theme_change class="fa fa-globe" style="color: rgb(0, 140, 255);"></i>
       </h1> 
-      <div class="service-about">{{$t('web_designAbout')}}</div>
+      <div class="service-about">
+        <span>
+          {{$t('web_designAbout')}}
+        </span>
+        <p style="padding-top: 1rem;">
+          {{$t('web_designStartingPrice')}}
+        </p>
+    </div>
     </div>
       <!-- Software Development section -->
     <div class="service-item" :class=$store.state.theme_change ref="gensoft">
@@ -42,6 +55,12 @@
         <li>- {{$t('gensoftPart5')}}</li>
         <li>- {{$t('gensoftPart6')}}</li>
       </ul>
+      <div class="service-about" style="padding-top: 1rem;">
+        {{$t('gensoftdevHourlyPrice')}}
+      </div>
+      <div class="service-about" style="padding-top: 1rem;">
+        {{$t('gensoftdevMonthlyPrice')}}
+      </div>
     </div>     
     <!-- Our Clients -->
     <div :class=$store.state.theme_change>
