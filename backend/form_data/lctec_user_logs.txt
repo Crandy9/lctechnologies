@@ -1,0 +1,5 @@
+2024-08-26 22:05:16,770 - form_data.views - ERROR - Country could not be located: 'city'
+Traceback (most recent call last):
+  File "/home/lctec/Desktop/lctec/lctechnologies/backend/form_data/views.py", line 130, in get_user_device
+    'city_name': str(json_response['city']),
+KeyError: 'city'
