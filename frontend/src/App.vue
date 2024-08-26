@@ -537,7 +537,6 @@ export default {
 
     getuserCountryByIP() {
 
-      console.log('what the heeeee')
       axios.get(process.env.VUE_APP_GET_USER_IP, 
       {
           headers: 
@@ -546,15 +545,16 @@ export default {
           } 
       }).then(response => {
 
-        console.log(JSON.stringify(response.data))
           this.userIP = response.geo_data.ip;
           this.userCountry = response.geo_data.city_name + ", " + response.geo_data.region_name + ", " + response.geo_data.country_name;
-          console.log(this.userIP)
-          console.log(this.userCountry)
+          console.log("thisuserIP: " + this.userIP)
+          console.log("thisuserCountry: " + this.userCountry)
 
         })
         .catch(error => {
         // handle error
+        console.log(JSON.stringify(error))
+
         this.userCountry = (this.$t('locationNotAvailable'))
         this.userIP = (this.$t('ipNotAvailable'))
 
