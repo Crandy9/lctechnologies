@@ -544,17 +544,11 @@ export default {
           'api-key': process.env.VUE_APP_API_KEY
           } 
       }).then(response => {
-
-          this.userIP = response.geo_data.ip;
-          this.userCountry = response.geo_data.city_name + ", " + response.geo_data.region_name + ", " + response.geo_data.country_name;
-          console.log("thisuserIP: " + this.userIP)
-          console.log("thisuserCountry: " + this.userCountry)
+          this.userIP = response.data.ip;
+          this.userCountry = response.data.city_name + ", " + response.data.region_name + ", " + response.data.country_name;
 
         })
         .catch(error => {
-        // handle error
-        console.log(JSON.stringify(error))
-
         this.userCountry = (this.$t('locationNotAvailable'))
         this.userIP = (this.$t('ipNotAvailable'))
 

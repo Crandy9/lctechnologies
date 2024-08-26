@@ -111,9 +111,9 @@ def get_user_device(request):
     GEO_IP_API_URL = 'http://ip-api.com/json/'
 
     # live
-    IP_TO_SEARCH = ip
+    # IP_TO_SEARCH = ip
     # japan test
-    # IP_TO_SEARCH = '203.10.99.206'
+    IP_TO_SEARCH = '203.10.99.206'
     # usa test
     # IP_TO_SEARCH = '24.117.191.114'
     req = urllib.request.Request(GEO_IP_API_URL+IP_TO_SEARCH)
@@ -121,7 +121,6 @@ def get_user_device(request):
     response = urllib.request.urlopen(req).read()
 
     json_response = json.loads(response.decode('utf-8'))
-    print(str(json_response))
 
     # Print country
     try:
@@ -131,7 +130,6 @@ def get_user_device(request):
             'region_name': str(json_response['regionName']),
             'country_name': str(json_response['country'])
         }        
-        print(str(geo_data))
         return Response(geo_data)
     except Exception as e:
         logger.debug('IP address: ' + str(IP_TO_SEARCH))
