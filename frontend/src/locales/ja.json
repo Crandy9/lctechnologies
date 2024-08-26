@@ -25,7 +25,7 @@
     "gensoftPart4": "DevOps: CI/CD インテグレーション",
     "gensoftPart5": "ウェブホスティング（SSL認証、DNS設定、クラウド展開）",
     "gensoftPart6": "ITコンサルタント",
-    "gensoftdevHourlyPrice": "時間単価： $75",
+    "gensoftdevHourlyPrice": "時間単価: $75",
     "gensoftdevMonthlyPrice": "月間単価: $250",    
     "clients":"Our Clients",
     "contact": "お問い合わせ",
@@ -56,6 +56,7 @@
     "formSubmitted": "お問い合わせいただきました。お客様のご要望をお伺いするため、担当者よりEメールにてご連絡させていただきます。ありがとうございました！",
     "Current_Location": "おおよその位置",
     "locationNotAvailable": "利用不可",
+    "ipNotAvailable": "利用不可",
     "Your_IP": "IPアドレス",
     "notfound": "お探しのページは存在しません。トップページに戻るにはここをクリックしてください。"
   }

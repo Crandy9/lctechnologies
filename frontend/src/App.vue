@@ -84,13 +84,7 @@
               </a>
             </div>
           </div>
-        </div> 
-        <!-- pricing -->
-        <!-- <div class="navbar-item my-dropdown">
-          <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" @click="hamburgerClicked = false; scrollTo('pricing')">
-            {{$t('pricingTitle')}}                         
-          </button>          
-        </div>           -->
+        </div>
         <!-- contact -->
         <div class="navbar-item my-dropdown">
           <button :class="$store.state.theme_change" class="my-link" style="font-weight: 700;" @click="hamburgerClicked = false; scrollTo('contact')">
@@ -162,10 +156,10 @@
           <div class="circle"></div>
           <div style="display: block;">
             <p style="font-size: 12px; padding: 0.1rem;">
-              {{$t('Current_Location')}}: {{ $store.state.geolocation }}
+              {{$t('Current_Location')}}: {{ userCountry }}
             </p>
             <p style="font-size: 12px; padding: 0.1rem; float:left">
-              {{$t('Your_IP')}}: {{ $store.state.userIP }}
+              {{$t('Your_IP')}}: {{ userIP }}
             </p>
           </div>
         </div>     
@@ -407,7 +401,8 @@ export default {
       hamburgerClicked: false,
       showScrollArrow: false,
       windowTop: 0,
-
+      userCountry: null,
+      userIP: null
     }
   },
 
@@ -433,57 +428,10 @@ export default {
 
   mounted() {
 
-    const geolocation = this.$store.state.geolocation
-    const userIP = this.$store.state.userIP
-
-    if (!geolocation || !userIP) {
+    if (!this.userCountry || !this.userIP) {
       // set locale and region
       // get the ip address
-      fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(response => {
-
-        this.$store.state.userIP = response.ip;
-
-        const userIP = {
-          'userIP': this.$store.state.userIP
-        }
-
-        // pass IP to backend
-        axios.get(process.env.VUE_APP_GET_GEO_DATA, userIP)
-          .then(response => {
-
-            if (response.data.city_name == "Singapore") {
-              this.$store.state.geolocation = (this.$t('locationNotAvailable'))
-              return
-            }
-            else {
-              this.$store.state.geolocation = response.data.city_name + ", " + response.data.region_name + ", " + response.data.country_name;
-
-            }
-
-
-          })
-          .catch(error => {
-            this.$store.state.geolocation = (this.$t('locationNotAvailable'))
-          });
-
-        // fetch('https://ip-api.com/json/' + this.$store.state.userIP + '?fields=city,region,country,countryCode')
-        // .then(response => response.json())
-        // .then(response => {
-
-        //   this.$store.state.geolocation = response.city + ", " + response.region + ", " + response.country
-
-        // }).catch(error => {
-        //     this.$store.state.geolocation = "Location Not Available";
-        // });        
-      }).catch(error => {
-          this.$store.state.userIP = "Client IP Not Available";
-      });
-    }
-    else {
-      return
-
+      this.getuserCountryByIP()
     }
 
     if (localStorage.getItem('theme') == 'lightTheme') {
@@ -586,6 +534,32 @@ export default {
 
   // methods 
   methods: {
+
+    getuserCountryByIP() {
+
+      console.log('what the heeeee')
+      axios.get(process.env.VUE_APP_GET_USER_IP, 
+      {
+          headers: 
+          { 
+          'api-key': process.env.VUE_APP_API_KEY
+          } 
+      }).then(response => {
+
+        console.log(JSON.stringify(response.data))
+          this.userIP = response.geo_data.ip;
+          this.userCountry = response.geo_data.city_name + ", " + response.geo_data.region_name + ", " + response.geo_data.country_name;
+          console.log(this.userIP)
+          console.log(this.userCountry)
+
+        })
+        .catch(error => {
+        // handle error
+        this.userCountry = (this.$t('locationNotAvailable'))
+        this.userIP = (this.$t('ipNotAvailable'))
+
+    }); 
+    },
 
     handleScroll(e) {
         this.windowTop = e.target.scrollTop;

@@ -28,6 +28,9 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from rest_framework.permissions import AllowAny
 from django.http import JsonResponse
 import requests
+import urllib.request
+import json
+
 
 # send thank you email to user after purchase
 from django.core.mail import EmailMessage
@@ -92,39 +95,74 @@ def process_form_data(request):
 
 
 
+# get user data
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def get_geoData(request):
+def get_user_device(request):
 
-    userIP = request.data.get('userIP', '')
+    user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
 
-    geoAPIKey = settings.env('geoAPIKey')
+    if user_ip is not None:
+        ip = user_ip.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
 
-    payload = {'key': geoAPIKey, 'ip': userIP, 'format': 'json'}
+    GEO_IP_API_URL = 'http://ip-api.com/json/'
 
+    # live
+    IP_TO_SEARCH = ip
+    # japan test
+    # IP_TO_SEARCH = '203.10.99.206'
+    # usa test
+    # IP_TO_SEARCH = '24.117.191.114'
+    req = urllib.request.Request(GEO_IP_API_URL+IP_TO_SEARCH)
+
+    response = urllib.request.urlopen(req).read()
+
+    json_response = json.loads(response.decode('utf-8'))
+    print(str(json_response))
+
+    # Print country
     try:
-        response = requests.get('https://api.ip2location.io/', params=payload)
-        data = response.json()
-
-        geolocation = {
-            'city_name': data.get('city_name', ''),
-            'region_name': data.get('region_name', ''),
-            'country_name': data.get('country_name', ''),
-        }
-
-        if geolocation['city_name'] is "Singapore":
-                
-            payload = {'key': geoAPIKey, 'ip': userIP2, 'format': 'json'}
-            response = requests.get('https://api.ip2location.io/', params=payload)
-            data = response.json()
-
-            geolocation = {
-                'city_name': data.get('city_name', ''),
-                'region_name': data.get('region_name', ''),
-                'country_name': data.get('country_name', ''),
-            }
-
-        return JsonResponse(geolocation)
+        geo_data = {
+            'ip': ip,
+            'city_name': str(json_response['city']),
+            'region_name': str(json_response['regionName']),
+            'country_name': str(json_response['country'])
+        }        
+        print(str(geo_data))
+        return Response(geo_data)
     except Exception as e:
-        return JsonResponse({'error': 'Location Not Available'})
+        logger.debug('IP address: ' + str(IP_TO_SEARCH))
+        logger.exception('Country could not be located: ' + str(e))
+        geo_data = {
+            'none': 'none'
+        }           
+        return Response(geo_data)
+
+
+# @api_view(['GET'])
+# @authentication_classes([])
+# @permission_classes([])
+# def get_geoData(request):
+
+#     userIP = request.data.get('userIP', '')
+
+#     geoAPIKey = settings.env('geoAPIKey')
+
+#     payload = {'key': geoAPIKey, 'ip': userIP, 'format': 'json'}
+
+#     try:
+#         response = requests.get('https://api.ip2location.io/', params=payload)
+#         data = response.json()
+
+#         geolocation = {
+#             'city_name': data.get('city_name', ''),
+#             'region_name': data.get('region_name', ''),
+#             'country_name': data.get('country_name', ''),
+#         }
+
+#         return JsonResponse(geolocation)
+#     except Exception as e:
+#         return JsonResponse({'error': 'Location Not Available'})

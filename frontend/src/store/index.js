@@ -4,8 +4,6 @@ export default createStore({
   state: {
     language: localStorage.getItem("language") || process.env.VUE_APP_I18N_LOCALE || 'en',
     region:  localStorage.getItem("region") || 'US',
-    geolocation: null,
-    userIP: null,
     isDarkTheme: true,
     theme_change: "darkTheme",
     theme: '',
