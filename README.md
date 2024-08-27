@@ -1,5 +1,5 @@
 # lctechnologies
-Business Site for lctechnologies.io with added features. Updated from test .NET set hosted in Azure Cloud:
+Business Site for https://lctechnologies.io with added features. Updated from test .NET set hosted in Azure Cloud:
 https://lctechnologies.azurewebsites.net/
 
 
