@@ -1,5 +1,6 @@
 # lctechnologies
-Business Site for LC Technologies with added features. Upgrade from .NET set hosted in Azure Cloud:
+Business Site for lctechnologies.io with added features. Updated from test .NET set hosted in Azure Cloud:
 https://lctechnologies.azurewebsites.net/
 
-This will be a Django/VueJS site with information on services offered and pricing plans, as well as a contact form to fill out.
+
+Built with Django/VueJS with information on services offered, pricing plans, as well as a contact form to fill out for potential clients.
