@@ -58,9 +58,9 @@
       <div class="service-about" style="padding-top: 1rem;">
         {{$t('gensoftdevHourlyPrice')}}
       </div>
-      <div class="service-about" style="padding-top: 1rem;">
+      <!-- <div class="service-about" style="padding-top: 1rem;">
         {{$t('gensoftdevMonthlyPrice')}}
-      </div>
+      </div> -->
     </div>     
     <!-- Our Clients -->
     <div :class=$store.state.theme_change>
